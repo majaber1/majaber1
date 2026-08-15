@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Jaber — Projects Hub</title>
+<meta name="description" content="AWS Cloud Architect & AI Product Builder. Public projects portfolio by Mohammed Jaber, Riyadh, Saudi Arabia.">
+<meta property="og:title" content="Mohammed Jaber — Projects Hub">
+<meta property="og:description" content="AWS Cloud Architect & AI Product Builder. 15+ public projects for the Saudi market.">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e1a;--surface:#111827;--surface2:#1a2332;--border:#1e293b;
+  --text:#e2e8f0;--muted:#64748b;--accent:#818cf8;--accent2:#a78bfa;
+  --green:#34d399;--gold:#f59e0b;--red:#f87171;--blue:#60a5fa;
+}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh}
+
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.topbar-brand{font-weight:700;font-size:0.9rem;color:var(--accent)}
+.topbar-links{display:flex;gap:16px;font-size:0.78rem}
+.topbar-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.topbar-links a:hover{color:var(--text)}
+.lang-btn{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:6px;font-size:0.72rem;cursor:pointer;transition:all .2s}
+.lang-btn:hover{color:var(--text);border-color:var(--accent)}
+
+.hero{text-align:center;padding:60px 24px 40px;max-width:800px;margin:0 auto}
+.hero h1{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.hero .subtitle{font-size:1rem;color:var(--muted);margin-bottom:20px}
+.hero .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:16px}
+.chip{background:var(--surface);border:1px solid var(--border);padding:5px 14px;border-radius:20px;font-size:0.72rem;color:var(--muted)}
+.chip-gold{border-color:rgba(245,158,11,.3);color:var(--gold)}
+.chip-green{border-color:rgba(52,211,153,.3);color:var(--green)}
+
+.stats-row{display:flex;justify-content:center;gap:32px;margin:24px 0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+.stat .lbl{font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+.section{max-width:1100px;margin:0 auto;padding:32px 24px}
+.section-title{font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.section-sub{font-size:0.78rem;color:var(--muted);margin-bottom:24px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:6px 16px;border-radius:8px;font-size:0.72rem;cursor:pointer;transition:all .2s;font-family:inherit}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .25s;position:relative;display:flex;flex-direction:column}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 32px rgba(129,140,248,.08)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.card-icon{font-size:1.6rem}
+.card-badges{display:flex;gap:4px;flex-wrap:wrap}
+.badge{padding:2px 8px;border-radius:5px;font-size:0.58rem;font-weight:700}
+.b-live{background:rgba(52,211,153,.12);color:var(--green)}
+.b-auth{background:rgba(96,165,250,.12);color:var(--blue)}
+.b-noauth{background:rgba(248,113,113,.12);color:var(--red)}
+.b-vercel{background:rgba(129,140,248,.12);color:var(--accent)}
+.b-ghpages{background:rgba(245,158,11,.12);color:var(--gold)}
+.b-nosite{background:rgba(100,116,139,.12);color:var(--muted)}
+.b-mobile{background:rgba(168,85,247,.12);color:#a855f7}
+.b-tested{background:rgba(52,211,153,.12);color:var(--green)}
+.b-notested{background:rgba(248,113,113,.12);color:var(--red)}
+
+.card-title{font-size:1rem;font-weight:700;margin-bottom:4px}
+.card-desc{font-size:0.78rem;color:var(--muted);margin-bottom:12px;flex:1}
+.card-stack{font-size:0.68rem;color:var(--muted);margin-bottom:12px}
+.card-stack span{background:var(--surface2);padding:2px 8px;border-radius:4px;margin-right:4px;display:inline-block;margin-bottom:4px}
+.card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px;margin-top:auto}
+.card-date{font-size:0.65rem;color:var(--muted)}
+.card-links{display:flex;gap:8px}
+.card-link{font-size:0.72rem;color:var(--accent);text-decoration:none;font-weight:600;transition:opacity .2s}
+.card-link:hover{opacity:.7}
+.card-link-site{color:var(--green)}
+
+.audit-section{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin-top:32px}
+.audit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
+.audit-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.audit-card .num{font-size:2rem;font-weight:800}
+.audit-card .lbl{font-size:0.7rem;color:var(--muted);margin-top:4px}
+.num-green{color:var(--green)}
+.num-red{color:var(--red)}
+.num-gold{color:var(--gold)}
+.num-blue{color:var(--blue)}
+
+.footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:0.72rem;border-top:1px solid var(--border);margin-top:48px}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.6rem}
+  .grid{grid-template-columns:1fr}
+  .stats-row{gap:20px}
+  .topbar{flex-wrap:wrap;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-brand">MJ Projects Hub</div>
+  <div class="topbar-links">
+    <a href="#projects">Projects</a>
+    <a href="#audit">Audit</a>
+    <a href="https://majaber1.github.io/MAJ-Consultant/" target="_blank">Portfolio</a>
+    <a href="https://github.com/majaber1" target="_blank">GitHub</a>
+  </div>
+  <button class="lang-btn" onclick="toggleLang()" id="lang-toggle">عربي</button>
+</nav>
+
+<section class="hero">
+  <h1 id="hero-title">Mohammed Jaber</h1>
+  <p class="subtitle" id="hero-subtitle">AWS Cloud Architect & AI Product Builder | Riyadh, Saudi Arabia</p>
+  <div class="chips">
+    <span class="chip chip-gold">20+ Years Experience</span>
+    <span class="chip chip-green">15 Public Projects</span>
+    <span class="chip">AWS Certified</span>
+    <span class="chip">Vision 2030</span>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="num">15</div><div class="lbl" data-en="Public Repos" data-ar="مستودعات عامة">Public Repos</div></div>
+    <div class="stat"><div class="num">11</div><div class="lbl" data-en="AI/SaaS Apps" data-ar="تطبيقات ذكاء اصطناعي">AI/SaaS Apps</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl" data-en="Live Sites" data-ar="مواقع مباشرة">Live Sites</div></div>
+    <div class="stat"><div class="num">8</div><div class="lbl" data-en="With Auth" data-ar="مع تسجيل دخول">With Auth</div></div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <h2 class="section-title" data-en="All Projects" data-ar="جميع المشاريع">All Projects</h2>
+  <p class="section-sub" data-en="Complete portfolio — sorted by last update" data-ar="جميع المشاريع — مرتبة حسب آخر تحديث">Complete portfolio — sorted by last update</p>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterCards('all')">All (15)</button>
+    <button class="filter-btn" onclick="filterCards('ai')">AI/SaaS (11)</button>
+    <button class="filter-btn" onclick="filterCards('web')">Web Sites (3)</button>
+    <button class="filter-btn" onclick="filterCards('auth')">Has Auth (8)</button>
+    <button class="filter-btn" onclick="filterCards('noauth')">Needs Auth (7)</button>
+    <button class="filter-btn" onclick="filterCards('live')">Live Site (3)</button>
+  </div>
+
+  <div class="grid" id="projects-grid"></div>
+</section>
+
+<section class="section" id="audit">
+  <div class="audit-section">
+    <h2 class="section-title" data-en="Repository Audit" data-ar="تدقيق المستودعات">Repository Audit</h2>
+    <p class="section-sub" data-en="Last audited: 2026-08-15" data-ar="آخر تدقيق: 2026-08-15">Last audited: 2026-08-15</p>
+    <div class="audit-grid">
+      <div class="audit-card"><div class="num num-green">3</div><div class="lbl" data-en="Live Sites Deployed" data-ar="مواقع مباشرة">Live Sites Deployed</div></div>
+      <div class="audit-card"><div class="num num-red">12</div><div class="lbl" data-en="Need Deployment" data-ar="تحتاج نشر">Need Deployment</div></div>
+      <div class="audit-card"><div class="num num-blue">8</div><div class="lbl" data-en="Have Auth/Login" data-ar="لديها تسجيل دخول">Have Auth/Login</div></div>
+      <div class="audit-card"><div class="num num-gold">7</div><div class="lbl" data-en="Need Auth Added" data-ar="تحتاج تسجيل دخول">Need Auth Added</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Mohammed Jaber — Riyadh, Saudi Arabia<br>
+  AWS Cloud Architect & Strategic Consultant | AI Product Builder
+</footer>
+
+<script>
+const projects = [
+  {
+    name: "Qarar AI", repo: "qarar-ai-v8-production-candidate",
+    desc: "Decision Intelligence Platform — Evidence to Decision to Action with AI Council, tenant isolation, and audit trail.",
+    stack: ["Next.js","FastAPI","PostgreSQL","pgvector"],
+    icon: "🧠", category: "ai", hasAuth: true, hasSite: false, siteType: null,
+    siteUrl: null, hasTests: true, updated: "2026-08-14", version: "v8.2-beta"
+  },
+  {
+    name: "Saudi Business", repo: "saudi-business",
+    desc: "Investment feasibility, funding matching, business qualification, and financial modeling for the Saudi market.",
+    stack: ["Next.js","FastAPI","PostgreSQL","Docker"],
+    icon: "💼", category: "ai", hasAuth: true, hasSite: false, siteType: "vercel",
+    siteUrl: null, hasTests: true, updated: "2026-08-14", version: "v1.0"
+  },
+  {
+    name: "Multazim AI", repo: "multazim-ai-mvp",
+    desc: "Arabic-first GRC compliance platform — assessment, site scan, policy drafts for Saudi SMEs.",
+    stack: ["Next.js","FastAPI","PostgreSQL","Docker"],
+    icon: "📋", category: "ai", hasAuth: false, hasSite: false, siteType: null,
+    siteUrl: null, hasTests: false, updated: "2026-08-15", version: "MVP"
+  },
+  {
+    name: "SponsorLoop", repo: "SponsorLoop",
+    desc: "Saudi-first bilingual sponsorship marketplace with AI matching, deal rooms, and analytics.",
+    stack: ["Next.js","PostgreSQL","AI Matching"],
+    icon: "🤝", category: "ai", hasAuth: true, hasSite: false, siteType: "vercel",
+    siteUrl: null, hasTests: true, updated: "2026-08-15", version: "v2"
+  },
+  {
+    name: "MiniBites AI Studio", repo: "MiniBites-AI-Studio",
+    desc: "Production studio for miniature cooking videos — plan, generate, review, assemble, publish.",
+    stack: ["Next.js","Upstash","Fal AI","Vercel Blob"],
+    icon: "🎬", category: "ai", hasAuth: true, hasSite: false, siteType: "vercel",
+    siteUrl: null, hasTests: true, updated: "2026-08-14", version: "v3"
+  },
+  {
+    name: "SignalPost", repo: "linkedin-ai-autoposter",
+    desc: "Multi-channel AI content studio — draft, review, approve, publish to LinkedIn with MCP integration.",
+    stack: ["Node.js","PostgreSQL","OpenAI","MCP"],
+    icon: "📡", category: "ai", hasAuth: true, hasSite: false, siteType: "vercel",
+    siteUrl: null, hasTests: true, updated: "2026-08-11", version: "v3"
+  },
+  {
+    name: "Private Coach", repo: "private-coach-v4",
+    desc: "Hybrid coaching marketplace — discover coaches, book sessions, AI coaching, progress tracking.",
+    stack: ["Next.js","FastAPI","PostgreSQL","Docker"],
+    icon: "🏋️", category: "ai", hasAuth: true, hasSite: false, siteType: null,
+    siteUrl: null, hasTests: false, updated: "2026-08-15", version: "v4"
+  },
+  {
+    name: "Saudi School Finder", repo: "saudi-school-finder",
+    desc: "Bilingual school search, comparison, and AI recommendations for Saudi parents.",
+    stack: ["Next.js","TypeScript"],
+    icon: "🏫", category: "ai", hasAuth: false, hasSite: false, siteType: "vercel",
+    siteUrl: null, hasTests: false, updated: "2026-07-21", version: "v1"
+  },
+  {
+    name: "WhatsApp Agent SaaS", repo: "whatsapp-agent-saas",
+    desc: "AI WhatsApp assistant — auto-replies, lead capture, FAQ knowledge base with Ollama.",
+    stack: ["Next.js","FastAPI","PostgreSQL","Ollama"],
+    icon: "💬", category: "ai", hasAuth: true, hasSite: false, siteType: null,
+    siteUrl: null, hasTests: false, updated: "2026-07-03", version: "v1"
+  },
+  {
+    name: "CloudShift AI", repo: "cloudshift-ai",
+    desc: "Cloud migration readiness, compliance gap analysis, and executive reporting with local AI.",
+    stack: ["Next.js","FastAPI","PostgreSQL","Ollama"],
+    icon: "☁️", category: "ai", hasAuth: true, hasSite: false, siteType: null,
+    siteUrl: null, hasTests: false, updated: "2026-07-02", version: "v1"
+  },
+  {
+    name: "ModPilot AI", repo: "modpilot-ai",
+    desc: "Arabic-first mobile MVP for AI car modification recommendations in Saudi Arabia.",
+    stack: ["Expo","React Native","TypeScript"],
+    icon: "🚗", category: "ai", hasAuth: false, hasSite: false, siteType: "mobile",
+    siteUrl: null, hasTests: false, updated: "2026-07-21", version: "MVP"
+  },
+  {
+    name: "MAJ Consultant", repo: "MAJ-Consultant",
+    desc: "AWS Cloud portfolio — roadmap, advisory framework, TCO calculator, NCA/PDPL compliance.",
+    stack: ["HTML","CSS","JavaScript"],
+    icon: "☁️", category: "web", hasAuth: false, hasSite: true, siteType: "ghpages",
+    siteUrl: "https://majaber1.github.io/MAJ-Consultant/", hasTests: false, updated: "2026-07-09", version: "Live"
+  },
+  {
+    name: "EADA Platform", repo: "eada-platform",
+    desc: "Circular economy asset evaluation — re-export, resale, redeployment, recycling assessment.",
+    stack: ["HTML","CSS","JavaScript"],
+    icon: "♻️", category: "web", hasAuth: false, hasSite: true, siteType: "ghpages",
+    siteUrl: "https://majaber1.github.io/eada-platform/", hasTests: true, updated: "2026-08-14", version: "Live"
+  },
+  {
+    name: "PlayMotion Events", repo: "playmotion-events",
+    desc: "Interactive gaming technology partner — MultiBall, X-Wall, Soccer Table marketing site.",
+    stack: ["React","Vite","Tailwind CSS"],
+    icon: "🎮", category: "web", hasAuth: false, hasSite: true, siteType: "ghpages",
+    siteUrl: "https://majaber1.github.io/playmotion-events/", hasTests: false, updated: "2026-07-24", version: "Live"
+  },
+  {
+    name: "majaber1", repo: "majaber1",
+    desc: "GitHub profile README and universal projects hub page.",
+    stack: ["HTML","Markdown"],
+    icon: "👤", category: "web", hasAuth: false, hasSite: true, siteType: "ghpages",
+    siteUrl: "https://majaber1.github.io/majaber1/", hasTests: false, updated: "2026-08-15", version: "Hub"
+  }
+];
+
+function renderProjects(filter) {
+  const grid = document.getElementById('projects-grid');
+  let filtered = projects;
+  if (filter === 'ai') filtered = projects.filter(p => p.category === 'ai');
+  if (filter === 'web') filtered = projects.filter(p => p.category === 'web');
+  if (filter === 'auth') filtered = projects.filter(p => p.hasAuth);
+  if (filter === 'noauth') filtered = projects.filter(p => !p.hasAuth);
+  if (filter === 'live') filtered = projects.filter(p => p.hasSite);
+
+  filtered.sort((a, b) => new Date(b.updated) - new Date(a.updated));
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="card" data-category="${p.category}" data-auth="${p.hasAuth}" data-site="${p.hasSite}">
+      <div class="card-header">
+        <span class="card-icon">${p.icon}</span>
+        <div class="card-badges">
+          ${p.hasSite ? `<span class="badge b-${p.siteType === 'ghpages' ? 'ghpages' : 'vercel'}">${p.siteType === 'ghpages' ? 'GitHub Pages' : p.siteType === 'mobile' ? 'Mobile' : 'Vercel'}</span>` : '<span class="badge b-nosite">No Site</span>'}
+          ${p.hasAuth ? '<span class="badge b-auth">Auth</span>' : '<span class="badge b-noauth">No Auth</span>'}
+          ${p.hasTests ? '<span class="badge b-tested">Tested</span>' : '<span class="badge b-notested">No Tests</span>'}
+        </div>
+      </div>
+      <div class="card-title">${p.name} <span style="font-size:0.7rem;color:var(--muted);font-weight:400">${p.version}</span></div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-stack">${p.stack.map(s => `<span>${s}</span>`).join('')}</div>
+      <div class="card-footer">
+        <span class="card-date">Updated: ${p.updated}</span>
+        <div class="card-links">
+          <a href="https://github.com/majaber1/${p.repo}" target="_blank" class="card-link">GitHub</a>
+          ${p.siteUrl ? `<a href="${p.siteUrl}" target="_blank" class="card-link card-link-site">Live Site</a>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCards(filter) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderProjects(filter);
+}
+
+let isArabic = false;
+function toggleLang() {
+  isArabic = !isArabic;
+  document.documentElement.lang = isArabic ? 'ar' : 'en';
+  document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+  document.getElementById('lang-toggle').textContent = isArabic ? 'English' : 'عربي';
+  document.getElementById('hero-title').textContent = isArabic ? 'محمد جابر' : 'Mohammed Jaber';
+  document.getElementById('hero-subtitle').textContent = isArabic
+    ? 'مهندس سحابة AWS ومطور منتجات ذكاء اصطناعي | الرياض، السعودية'
+    : 'AWS Cloud Architect & AI Product Builder | Riyadh, Saudi Arabia';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = isArabic ? el.dataset.ar : el.dataset.en;
+  });
+}
+
+renderProjects('all');
+</script>
+</body>
+</html>
