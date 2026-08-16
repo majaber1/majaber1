@@ -1,0 +1,118 @@
+export type Locale = 'en' | 'ar';
+
+const translations: Record<string, Record<Locale, string>> = {
+  'app.title': { en: 'Jaber Dashboard', ar: 'لوحة جابر' },
+  'app.subtitle': { en: 'Product Control Tower', ar: 'برج مراقبة المنتجات' },
+  'nav.portfolio': { en: 'Portfolio', ar: 'المحفظة' },
+  'nav.focus': { en: 'Focus', ar: 'التركيز' },
+  'nav.projects': { en: 'Projects', ar: 'المشاريع' },
+
+  'kpi.totalApps': { en: 'Total Applications', ar: 'إجمالي التطبيقات' },
+  'kpi.productionReady': { en: 'Production Ready', ar: 'جاهز للإنتاج' },
+  'kpi.development': { en: 'In Development', ar: 'قيد التطوير' },
+  'kpi.blocked': { en: 'Blocked', ar: 'محظور' },
+  'kpi.qaRequired': { en: 'QA Required', ar: 'يتطلب اختبار' },
+  'kpi.pilotReady': { en: 'Pilot Ready', ar: 'جاهز للتجربة' },
+  'kpi.readyToSell': { en: 'Ready to Sell', ar: 'جاهز للبيع' },
+  'kpi.revenueGenerating': { en: 'Revenue Generating', ar: 'يولّد إيرادات' },
+  'kpi.totalPending': { en: 'Total Pending', ar: 'إجمالي المعلّق' },
+  'kpi.totalBlockers': { en: 'Total Blockers', ar: 'إجمالي العوائق' },
+
+  'focus.title': { en: "TODAY'S RECOMMENDED FOCUS", ar: 'التركيز الموصى به اليوم' },
+  'focus.priority': { en: 'Priority', ar: 'الأولوية' },
+  'focus.reason': { en: 'Reason', ar: 'السبب' },
+  'focus.today': { en: 'TODAY', ar: 'اليوم' },
+  'focus.definitionOfDone': { en: 'Definition of Done', ar: 'تعريف الانتهاء' },
+  'focus.afterThis': { en: 'After This', ar: 'بعد ذلك' },
+  'focus.next': { en: 'NEXT', ar: 'التالي' },
+  'focus.overdue': { en: 'Overdue Items', ar: 'عناصر متأخرة' },
+  'focus.blockedItems': { en: 'Blocked Items', ar: 'عناصر محظورة' },
+  'focus.quickWins': { en: 'Quick Wins', ar: 'مكاسب سريعة' },
+
+  'filter.all': { en: 'All', ar: 'الكل' },
+  'filter.workNow': { en: 'Work Now', ar: 'اعمل الآن' },
+  'filter.blocked': { en: 'Blocked', ar: 'محظور' },
+  'filter.development': { en: 'Development', ar: 'تطوير' },
+  'filter.qa': { en: 'QA', ar: 'اختبار الجودة' },
+  'filter.production': { en: 'Production', ar: 'إنتاج' },
+  'filter.pilotReady': { en: 'Pilot Ready', ar: 'جاهز للتجربة' },
+  'filter.salesReady': { en: 'Sales Ready', ar: 'جاهز للبيع' },
+  'filter.revenue': { en: 'Revenue', ar: 'إيرادات' },
+  'filter.paused': { en: 'Paused', ar: 'متوقف' },
+  'filter.archived': { en: 'Archived', ar: 'مؤرشف' },
+
+  'sort.priority': { en: 'Recommended Priority', ar: 'الأولوية الموصى بها' },
+  'sort.launch': { en: 'Closest to Launch', ar: 'الأقرب للإطلاق' },
+  'sort.revenue': { en: 'Closest to Revenue', ar: 'الأقرب للإيرادات' },
+  'sort.market': { en: 'Highest Market Opportunity', ar: 'أعلى فرصة سوقية' },
+  'sort.effort': { en: 'Lowest Effort', ar: 'أقل جهد' },
+  'sort.readiness': { en: 'Highest Readiness', ar: 'أعلى جاهزية' },
+  'sort.blocked': { en: 'Most Blocked', ar: 'الأكثر عوائق' },
+  'sort.updated': { en: 'Recently Updated', ar: 'آخر تحديث' },
+
+  'tab.overview': { en: 'Overview', ar: 'نظرة عامة' },
+  'tab.execution': { en: 'Execution', ar: 'التنفيذ' },
+  'tab.technical': { en: 'Technical', ar: 'التقنية' },
+  'tab.artifacts': { en: 'Artifacts', ar: 'المخرجات' },
+  'tab.market': { en: 'Market', ar: 'السوق' },
+  'tab.commercial': { en: 'Commercial', ar: 'التجاري' },
+  'tab.financial': { en: 'Financial', ar: 'المالي' },
+  'tab.roadmap': { en: 'Roadmap', ar: 'خارطة الطريق' },
+  'tab.deployment': { en: 'Deployment', ar: 'النشر' },
+
+  'status.resolved': { en: 'Resolved', ar: 'تم الحل' },
+  'status.pending': { en: 'Pending', ar: 'معلّق' },
+  'status.blocker': { en: 'Blocker', ar: 'عائق' },
+  'status.ready': { en: 'READY', ar: 'جاهز' },
+  'status.partial': { en: 'PARTIAL', ar: 'جزئي' },
+  'status.missing': { en: 'MISSING', ar: 'مفقود' },
+  'status.outdated': { en: 'OUTDATED', ar: 'قديم' },
+  'status.notRequired': { en: 'NOT REQUIRED', ar: 'غير مطلوب' },
+
+  'provenance.auto': { en: 'AUTO', ar: 'تلقائي' },
+  'provenance.manual': { en: 'MANUAL', ar: 'يدوي' },
+  'provenance.estimated': { en: 'ESTIMATED', ar: 'تقديري' },
+  'provenance.researched': { en: 'RESEARCHED', ar: 'مبحوث' },
+  'provenance.unverified': { en: 'UNVERIFIED', ar: 'غير مؤكد' },
+
+  'lifecycle.idea': { en: 'Idea', ar: 'فكرة' },
+  'lifecycle.research': { en: 'Research', ar: 'بحث' },
+  'lifecycle.ux': { en: 'UX', ar: 'تجربة المستخدم' },
+  'lifecycle.mvp': { en: 'MVP', ar: 'النموذج الأولي' },
+  'lifecycle.development': { en: 'Development', ar: 'تطوير' },
+  'lifecycle.integration': { en: 'Integration', ar: 'تكامل' },
+  'lifecycle.qa': { en: 'QA', ar: 'اختبار الجودة' },
+  'lifecycle.production': { en: 'Production', ar: 'إنتاج' },
+  'lifecycle.validation': { en: 'Validation', ar: 'تحقق' },
+  'lifecycle.pilot': { en: 'Pilot', ar: 'تجربة' },
+  'lifecycle.sales': { en: 'Sales', ar: 'مبيعات' },
+  'lifecycle.revenue': { en: 'Revenue', ar: 'إيرادات' },
+  'lifecycle.scale': { en: 'Scale', ar: 'توسع' },
+
+  'section.competitors': { en: 'Competitor Analysis', ar: 'تحليل المنافسين' },
+  'section.market': { en: 'Market Opportunity', ar: 'فرصة السوق' },
+  'section.commercial': { en: 'Commercial Strategy', ar: 'الاستراتيجية التجارية' },
+  'section.financial': { en: 'Financial Model', ar: 'النموذج المالي' },
+  'section.github': { en: 'GitHub Status', ar: 'حالة GitHub' },
+  'section.vercel': { en: 'Vercel Status', ar: 'حالة Vercel' },
+  'section.artifacts': { en: 'Artifact Readiness', ar: 'جاهزية المخرجات' },
+
+  'label.score': { en: 'Score', ar: 'النتيجة' },
+  'label.recommendation': { en: 'Recommendation', ar: 'التوصية' },
+  'label.stage': { en: 'Stage', ar: 'المرحلة' },
+  'label.status': { en: 'Status', ar: 'الحالة' },
+  'label.readiness': { en: 'Readiness', ar: 'الجاهزية' },
+  'label.actions': { en: 'Actions', ar: 'الإجراءات' },
+  'label.thisWeek': { en: 'This Week', ar: 'هذا الأسبوع' },
+  'label.next30': { en: 'Next 30 Days', ar: 'الـ 30 يوم القادمة' },
+  'label.next60': { en: 'Next 60 Days', ar: 'الـ 60 يوم القادمة' },
+  'label.next90': { en: 'Next 90 Days', ar: 'الـ 90 يوم القادمة' },
+};
+
+export function t(key: string, locale: Locale): string {
+  return translations[key]?.[locale] ?? key;
+}
+
+export function isRTL(locale: Locale): boolean {
+  return locale === 'ar';
+}
