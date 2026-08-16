@@ -1,62 +1,90 @@
-# Mohammed Jaber
+# Jaber Dashboard V2 — Product Control Tower
 
-**AWS Cloud Architect & Strategic Consultant**  
-Senior IT Infrastructure Specialist | Riyadh, Saudi Arabia
+Portfolio dashboard, PMO, technical readiness monitor, GitHub/Vercel monitor, market intelligence dashboard, commercial strategy dashboard, and daily execution guide.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-MAJ%20Consultant-blueviolet?style=for-the-badge)](https://majaber1.github.io/MAJ-Consultant/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com)
-[![Location](https://img.shields.io/badge/Location-Riyadh%2C%20KSA-green?style=for-the-badge)](https://majaber1.github.io/MAJ-Consultant/)
+## Architecture
 
----
+- **Framework**: Next.js 15 + TypeScript + Tailwind CSS v4
+- **Data**: Typed project data in `src/data/projects.ts`
+- **Deployment**: Vercel (primary), GitHub for source control
+- **Persistence**: JSON data fallback (database abstraction ready)
 
-## About Me
+## Getting Started
 
-I am a Senior IT Infrastructure Specialist with **20+ years of experience**, currently on an 18-month journey to become an **AWS Strategic Consulting Architect**. My work bridges enterprise cloud transformation, government compliance, and Vision 2030 digital initiatives in Saudi Arabia.
+```bash
+npm install
+npm run dev
+```
 
-**Current Focus:** AWS Solutions Architect Professional Certification
+Open [http://localhost:3000](http://localhost:3000).
 
----
+## Project Structure
 
-## Skills & Expertise
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── page.tsx           # Portfolio home
+│   ├── focus/page.tsx     # Daily focus page
+│   └── projects/[slug]/   # Project detail pages
+├── components/            # Reusable UI components
+├── data/
+│   └── projects.ts        # Project data (7 projects)
+├── lib/
+│   ├── priority.ts        # Priority scoring engine
+│   ├── i18n.ts           # AR/EN translations
+│   ├── locale-context.tsx # Locale provider
+│   └── utils.ts          # Utility functions
+└── types/
+    └── project.ts         # TypeScript data model
+```
 
-- **Cloud Platforms:** AWS (EC2, RDS, VPC, S3, CloudFormation, Lambda)
-- - **Compliance:** NCA Essential Controls, PDPL (Saudi Arabia), ISO 27001
-  - - **Consulting:** Cloud TCO Analysis, Data Center Migration, DR Planning
-    - - **Infrastructure:** Oracle RAC, Enterprise Networking, Hybrid Cloud
-      -
-      - ---
-      -
-      - ## Featured Project
-      -
-      - ### MAJ Consultant — AWS Cloud Knowledge Hub
-      - My personal portfolio site featuring interactive tools, roadmaps, and compliance guides for enterprise cloud adoption.
-      -
-      - **Live:** https://majaber1.github.io/MAJ-Consultant/
-      -
-      - | Tool | Description |
-      - |------|-------------|
-      - | AWS Roadmap | 18-Month Solutions Architect Mastery Plan |
-      - | Cloud Advisory | Strategic Consulting Framework |
-      - | TCO Calculator | AWS vs On-Premises Cost Comparison |
-      - | NCA/PDPL Guide | Saudi Arabia Cloud Compliance Checklist |
-      -
-      - ---
-      -
-      - ## Notable Clients
-      -
-      - - Princess Nourah bint Abdulrahman University — Data Center Migration
-        - - Imam Mohammad Ibn Saud Islamic University — Cloud Adoption & Governance
-          - - Edarat Cloud — Oracle RAC DR Advisory
-            -
-            - ---
-            -
-            - ## Certifications (In Progress)
-            -
-            - - AWS Certified Solutions Architect — Associate (Target: 2025)
-              - - AWS Certified Solutions Architect — Professional (Target: 2026)
-                -
-                - ---
-                -
- 👋
+## Features
 
-<!--
+- **Portfolio Overview**: KPI cards, filters, sorting, project cards
+- **Priority Engine**: Weighted scoring model (100 points) with transparent recommendations
+- **Daily Focus**: Today's recommended project, top 3 actions, blockers, quick wins
+- **Project Pages**: 9-tab command pages (Overview, Execution, Technical, Artifacts, Market, Commercial, Financial, Roadmap, Deployment)
+- **Artifact Monitor**: Readiness tracking across Product, Technical, QA, Business, Commercial
+- **Market Intelligence**: Competitor analysis, market opportunity, TAM/SAM/SOM
+- **Financial Engine**: Revenue scenarios, milestones, break-even calculations
+- **Opportunity Matrix**: Visual portfolio chart (effort vs revenue)
+- **GitHub/Vercel Monitoring**: Repository and deployment status tracking
+- **Data Provenance**: AUTO / MANUAL / ESTIMATED / RESEARCHED / UNVERIFIED badges
+- **AR/EN**: Full bilingual support with RTL
+- **Product Lifecycle**: 13-stage journey tracker per project
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deploy
+
+Deployed to Vercel. Push to `main` triggers production deployment.
+
+## Data Model
+
+Projects are typed with comprehensive fields covering:
+- Identity, stage, status
+- Scores (product, technical, QA, deployment, commercial, artifacts, market, revenue, priority)
+- GitHub and Vercel integration info
+- 13-stage lifecycle tracker
+- Tasks (resolved, pending, blockers)
+- Artifacts with readiness status
+- Competitors with detailed analysis
+- Market opportunity with TAM/SAM/SOM
+- Commercial strategy with fastest path to first customer
+- Financial model with revenue milestones
+- Roadmap (this week through 90 days)
+- Data provenance for every important value
+
+## Projects Tracked
+
+1. Qarar AI
+2. Multazim AI
+3. Saudi Business
+4. Private Coach
+5. Mini Bites AI
+6. LinkedIn AI Post
+7. Jaber Dashboard (self-tracking)
