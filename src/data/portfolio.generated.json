@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
+  "generatedAt": "2026-08-26T17:19:18.637Z",
   "generator": "scripts/sync-portfolio.mjs",
   "sourcePolicy": {
     "code": "GitHub canonical branch",
@@ -8,5 +8,1478 @@
     "docs": "manifest-declared README/architecture paths",
     "commercial": "not generated here; remains manual/researched in projects.ts"
   },
-  "projects": []
+  "projects": [
+    {
+      "repo": "majaber1/qarar-ai-v10",
+      "product": "Qarar AI",
+      "productSlug": "qarar-ai",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Use live deployment health and complete one durable production decision journey.",
+      "productionUrl": "https://qarar-ai-v10.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "d6b52a19b98de714d499dddb144b7aabb646ca7c",
+        "headMessage": "Fix Qarar health contract and refresh source of truth",
+        "headCommittedAt": "2026-08-26T16:21:17Z",
+        "repoUpdatedAt": "2026-08-26T16:22:02Z",
+        "repoPushedAt": "2026-08-26T16:21:17Z",
+        "htmlUrl": "https://github.com/majaber1/qarar-ai-v10",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "Qarar CI",
+          "updatedAt": "2026-08-26T16:43:53Z",
+          "url": "https://github.com/majaber1/qarar-ai-v10/actions/runs/32989925820"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:21:17Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:21:17Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://qarar-ai-v10.vercel.app/api/deployment-health",
+          "ok": false,
+          "httpStatus": 503,
+          "latencyMs": 5863,
+          "body": {
+            "status": "degraded",
+            "frontend": "ready",
+            "backend": "unreachable"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "degraded",
+        "summary": "At least one declared health endpoint is failing (503)."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/saudi-business",
+      "product": "Saudi Business",
+      "productSlug": "saudi-business",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Use deployment health, then validate a fresh-account feasibility-to-export journey.",
+      "productionUrl": "https://saudi-business-web.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "fe674172611450e3ce48303ba318b8d20573b13d",
+        "headMessage": "Align Saudi Business health, storage and architecture",
+        "headCommittedAt": "2026-08-26T16:23:27Z",
+        "repoUpdatedAt": "2026-08-26T16:25:03Z",
+        "repoPushedAt": "2026-08-26T16:23:27Z",
+        "htmlUrl": "https://github.com/majaber1/saudi-business",
+        "ci": {
+          "state": "failing",
+          "conclusion": "failure",
+          "workflow": "CI",
+          "updatedAt": "2026-08-26T16:41:05Z",
+          "url": "https://github.com/majaber1/saudi-business/actions/runs/32989700704"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:23:27Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/PRODUCT_ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:23:27Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://saudi-business-web.vercel.app/api/deployment-health",
+          "ok": false,
+          "httpStatus": 404,
+          "latencyMs": 181,
+          "body": "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\" class=\"inter_5090b139-module__1h4HmG__variable tajawal_ecbdf2b3-module__jvXS4q__variable\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/0nit5axgw9fuu.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/immutable/chunks/25kvgcvbp6c14.js\"/><script src=\"/_next/static/immutable/chunks/28fkf9f9btak4.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/0u5o2n_fg8ytz.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/1_bkiiq4b4h8t.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/turbopack-3zoxssnfs5ejn.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/1mrc6wz568ov6.js\" async=\"\" crossorigin=\"\"></script><script src=\"/_next/static/immutable/chunks/3wzycrzb45h91.js\" async=\"\" crossorigin=\"\"></script><meta name=\"robots\" content=\"noindex\"/><",
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "degraded",
+        "summary": "At least one declared health endpoint is failing (404)."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/linkedin-ai-autoposter",
+      "product": "SignalPost",
+      "productSlug": "signalpost",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Keep runtime healthy and convert real users before expanding connectors.",
+      "productionUrl": "https://linkedin-ai-autoposter-rouge.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "f300ea5be07e7dffa2a437f069de53d4f11a5c85",
+        "headMessage": "Add SignalPost canonical architecture and dashboard manifest",
+        "headCommittedAt": "2026-08-26T16:21:49Z",
+        "repoUpdatedAt": "2026-08-26T16:24:26Z",
+        "repoPushedAt": "2026-08-26T16:21:50Z",
+        "htmlUrl": "https://github.com/majaber1/linkedin-ai-autoposter",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "CI",
+          "updatedAt": "2026-08-26T16:38:17Z",
+          "url": "https://github.com/majaber1/linkedin-ai-autoposter/actions/runs/32989477990"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-11T18:38:05Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:21:49Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://linkedin-ai-autoposter-rouge.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 1880,
+          "body": {
+            "mode": "ai",
+            "databaseReachable": true,
+            "persistence": "postgres",
+            "durable": true,
+            "version": "3.0.0"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "healthy",
+        "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/SponsorLoop",
+      "product": "SponsorLoop",
+      "productSlug": "sponsorloop",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Resolve any health-reported storage/AI dependencies and prove one real sponsorship deal journey.",
+      "productionUrl": "https://sponsorloop-gold.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "814728e3473088b02cc25fb4dad18178b1f9d235",
+        "headMessage": "Establish SponsorLoop operational source of truth",
+        "headCommittedAt": "2026-08-26T16:21:30Z",
+        "repoUpdatedAt": "2026-08-26T16:41:06Z",
+        "repoPushedAt": "2026-08-26T16:21:30Z",
+        "htmlUrl": "https://github.com/majaber1/SponsorLoop",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:21:30Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:21:30Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://sponsorloop-gold.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 1132,
+          "body": {
+            "status": "ok",
+            "version": "2.0.0",
+            "database": "connected",
+            "ai": "deterministic-fallback",
+            "storage": "not_configured",
+            "payments": "not_configured"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "configured",
+        "provider": "reported by health",
+        "evidence": "https://sponsorloop-gold.vercel.app/api/health"
+      },
+      "runtime": {
+        "state": "partial",
+        "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/eada-platform",
+      "product": "EADA",
+      "productSlug": "eada",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Prove one complete server-backed asset disposition workflow.",
+      "productionUrl": "https://eada-platform.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "62490eba244fbfdfea73a0f6dc57dad19ffd4f3e",
+        "headMessage": "Refresh EADA runtime truth and health",
+        "headCommittedAt": "2026-08-26T16:22:33Z",
+        "repoUpdatedAt": "2026-08-26T16:23:03Z",
+        "repoPushedAt": "2026-08-26T16:22:33Z",
+        "htmlUrl": "https://github.com/majaber1/eada-platform",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "Deploy static site to Pages",
+          "updatedAt": "2026-08-26T16:39:36Z",
+          "url": "https://github.com/majaber1/eada-platform/actions/runs/32989597516"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:22:33Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:22:33Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://eada-platform.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 662,
+          "body": {
+            "status": "ok",
+            "database": true,
+            "storage": false
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "not_configured",
+        "provider": "none",
+        "evidence": "https://eada-platform.vercel.app/api/health"
+      },
+      "runtime": {
+        "state": "partial",
+        "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/scrap-ai",
+      "product": "Scrap AI",
+      "productSlug": "scrap-ai",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Resolve health-reported AI/storage gaps and prove intake-to-completion workflow.",
+      "productionUrl": "https://scrap-ai.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "aa36b01ffac9f70827796718176f6c52cf1d06d4",
+        "headMessage": "Refresh Scrap AI runtime documentation",
+        "headCommittedAt": "2026-08-26T16:21:39Z",
+        "repoUpdatedAt": "2026-08-26T16:22:10Z",
+        "repoPushedAt": "2026-08-26T16:21:39Z",
+        "htmlUrl": "https://github.com/majaber1/scrap-ai",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:21:39Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:21:39Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://scrap-ai.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 686,
+          "body": {
+            "status": "ok",
+            "database": true,
+            "ai": false,
+            "storage": false
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "not_configured",
+        "provider": "none",
+        "evidence": "https://scrap-ai.vercel.app/api/health"
+      },
+      "runtime": {
+        "state": "partial",
+        "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/multazim-ai-mvp",
+      "product": "Multazim AI",
+      "productSlug": "multazim-ai",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Treat current MVP health honestly; integrate durable identity/persistence before production claims.",
+      "productionUrl": "https://multazim-ai-mvp.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "f49ce20f91b1b865fbdf457f50d2e00742bfe569",
+        "headMessage": "Make Multazim MVP health and docs honest",
+        "headCommittedAt": "2026-08-26T16:23:51Z",
+        "repoUpdatedAt": "2026-08-26T16:24:31Z",
+        "repoPushedAt": "2026-08-26T16:23:51Z",
+        "htmlUrl": "https://github.com/majaber1/multazim-ai-mvp",
+        "ci": {
+          "state": "failing",
+          "conclusion": "failure",
+          "workflow": "CI",
+          "updatedAt": "2026-08-26T16:35:46Z",
+          "url": "https://github.com/majaber1/multazim-ai-mvp/actions/runs/32989250035"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:23:51Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:23:51Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://multazim-ai-mvp.vercel.app/api/health",
+          "ok": false,
+          "httpStatus": 503,
+          "latencyMs": 815,
+          "body": {
+            "status": "degraded"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "degraded",
+        "summary": "At least one declared health endpoint is failing (503)."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/saudi-source",
+      "product": "Saudi Source",
+      "productSlug": "saudi-source",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Prove one supplier-to-buyer export deal with durable evidence.",
+      "productionUrl": "https://saudi-source.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "0b57ac6690dbae250168873b7ae4d33a42e1b79d",
+        "headMessage": "Refresh Saudi Source operational source of truth",
+        "headCommittedAt": "2026-08-26T16:22:41Z",
+        "repoUpdatedAt": "2026-08-26T16:23:24Z",
+        "repoPushedAt": "2026-08-26T16:22:41Z",
+        "htmlUrl": "https://github.com/majaber1/saudi-source",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:22:41Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:22:41Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://saudi-source.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 710,
+          "body": {
+            "status": "ok",
+            "database": true
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "healthy",
+        "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/MiniBites-AI-Studio",
+      "product": "Kiswani / MiniBites AI Studio",
+      "productSlug": "minibites-ai",
+      "classification": "Active product family",
+      "state": "active",
+      "action": "Use public health to verify Redis/media/provider readiness and complete one production episode.",
+      "productionUrl": "https://minibites-ai-studio.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "25d96159d648553b4c306b92f17421117efc7a5e",
+        "headMessage": "Add safe public Kiswani health and source of truth",
+        "headCommittedAt": "2026-08-26T16:23:39Z",
+        "repoUpdatedAt": "2026-08-26T16:24:06Z",
+        "repoPushedAt": "2026-08-26T16:23:39Z",
+        "htmlUrl": "https://github.com/majaber1/MiniBites-AI-Studio",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "MiniBites quality gates",
+          "updatedAt": "2026-08-26T16:37:55Z",
+          "url": "https://github.com/majaber1/MiniBites-AI-Studio/actions/runs/32989384371"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-19T00:41:45Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:23:39Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://minibites-ai-studio.vercel.app/api/health",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 719,
+          "body": {
+            "status": "ready",
+            "service": "kiswani-ai-studio",
+            "providers": {}
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "healthy",
+        "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/private-coach-v4",
+      "product": "Private Coach",
+      "productSlug": "private-coach",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Verify frontend-to-backend binding and one durable booking journey.",
+      "productionUrl": "https://private-coach-v4.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "master",
+        "headSha": "f44d69b6f672256951eb5a0256fee109a184c7d8",
+        "headMessage": "Professional design upgrade with AR-EN branding sync",
+        "headCommittedAt": "2026-08-15T00:40:00Z",
+        "repoUpdatedAt": "2026-08-15T16:44:52Z",
+        "repoPushedAt": "2026-08-26T16:03:26Z",
+        "htmlUrl": "https://github.com/majaber1/private-coach-v4",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "Graph Update: pip in /backend #1526099212",
+          "updatedAt": "2026-08-15T00:38:09Z",
+          "url": "https://github.com/majaber1/private-coach-v4/actions/runs/31854161719"
+        }
+      },
+      "manifest": {
+        "state": "missing",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "unverified",
+        "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/playmotion-events",
+      "product": "PlayMotion Events",
+      "productSlug": "playmotion-events",
+      "classification": "Active commercial site",
+      "state": "active",
+      "action": "Keep static site healthy; connect booking/lead delivery before calling reservations operational.",
+      "productionUrl": "https://playmotion-events.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "90c113d2527917fbdab970ed6fed1daa43195fcf",
+        "headMessage": "Define PlayMotion static operational health",
+        "headCommittedAt": "2026-08-26T16:22:01Z",
+        "repoUpdatedAt": "2026-08-26T16:22:36Z",
+        "repoPushedAt": "2026-08-26T16:40:07Z",
+        "htmlUrl": "https://github.com/majaber1/playmotion-events",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "Deploy to GitHub Pages",
+          "updatedAt": "2026-08-26T16:40:10Z",
+          "url": "https://github.com/majaber1/playmotion-events/actions/runs/32989579876"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "http-static-health",
+        "readinessHints": {
+          "runtime": "static",
+          "backend": "not-required-currently",
+          "booking": "not-connected"
+        }
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:22:01Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:22:01Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://playmotion-events.vercel.app/health.json",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 104,
+          "body": {
+            "status": "ready",
+            "service": "playmotion-events",
+            "backend": "not-present",
+            "booking": "not-connected",
+            "database": "not-required"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "static",
+        "summary": "Static deployment health is good; manifest correctly marks backend/booking capabilities that are not connected."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/whatsapp-agent-saas",
+      "product": "WhatsApp Agent SaaS",
+      "productSlug": "whatsapp-agent",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Prove frontend/backend, DB, AI and real WhatsApp dependencies independently.",
+      "productionUrl": "https://whatsapp-agent-saas-five.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "da74753298244a545d874f6b24046b876797d918",
+        "headMessage": "test: add auth validation unit tests for login and register",
+        "headCommittedAt": "2026-08-16T13:19:58Z",
+        "repoUpdatedAt": "2026-08-16T13:20:15Z",
+        "repoPushedAt": "2026-08-26T16:08:22Z",
+        "htmlUrl": "https://github.com/majaber1/whatsapp-agent-saas",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "CI",
+          "updatedAt": "2026-08-16T13:21:18Z",
+          "url": "https://github.com/majaber1/whatsapp-agent-saas/actions/runs/31949517132"
+        }
+      },
+      "manifest": {
+        "state": "missing",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "unverified",
+        "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/cloudshift-ai",
+      "product": "CloudShift AI",
+      "productSlug": "cloudshift-ai",
+      "classification": "Active product",
+      "state": "active",
+      "action": "Keep broken-source repair separate until validated; then establish a canonical production target.",
+      "productionUrl": null,
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "025fd8a937631e0c1e670becc6661547945f95c4",
+        "headMessage": "test: add auth and migration complexity unit tests",
+        "headCommittedAt": "2026-08-16T13:20:10Z",
+        "repoUpdatedAt": "2026-08-16T13:20:43Z",
+        "repoPushedAt": "2026-08-26T16:11:46Z",
+        "htmlUrl": "https://github.com/majaber1/cloudshift-ai",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "CI",
+          "updatedAt": "2026-08-16T13:23:45Z",
+          "url": "https://github.com/majaber1/cloudshift-ai/actions/runs/31949529450"
+        }
+      },
+      "manifest": {
+        "state": "missing",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "unverified",
+        "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/modpilot-ai",
+      "product": "ModPilot AI",
+      "productSlug": "modpilot-ai",
+      "classification": "Active mobile MVP",
+      "state": "active",
+      "action": "Use CI/build health; do not claim backend/AI readiness until integrations exist.",
+      "productionUrl": null,
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "9505792f927f57b1887ee1a9e3474de3d1fb456c",
+        "headMessage": "Define ModPilot mobile MVP source of truth",
+        "headCommittedAt": "2026-08-26T16:22:10Z",
+        "repoUpdatedAt": "2026-08-26T16:22:54Z",
+        "repoPushedAt": "2026-08-26T16:22:10Z",
+        "htmlUrl": "https://github.com/majaber1/modpilot-ai",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "ci-build",
+        "readinessHints": {
+          "runtime": "mobile-mvp",
+          "backend": "not-implemented",
+          "ai": "not-integrated",
+          "persistence": "not-proven"
+        }
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:22:10Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:22:10Z",
+          "stale": false
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "manifest readiness hints"
+      },
+      "runtime": {
+        "state": "unverified",
+        "summary": "CI/build health is unavailable; runtime readiness is not proven."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/saudi-school-finder",
+      "product": "Saudi School Finder",
+      "productSlug": "saudi-school-finder",
+      "classification": "Active MVP",
+      "state": "active",
+      "action": "Keep demo-data status explicit and obtain an authoritative school-data source before production claims.",
+      "productionUrl": "https://saudi-school-finder.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "a7a3ed0247f6a58c71f02decde376a9fc133c9d3",
+        "headMessage": "Make School Finder demo and runtime status explicit",
+        "headCommittedAt": "2026-08-26T16:24:03Z",
+        "repoUpdatedAt": "2026-08-26T16:24:38Z",
+        "repoPushedAt": "2026-08-26T16:24:03Z",
+        "htmlUrl": "https://github.com/majaber1/saudi-school-finder",
+        "ci": {
+          "state": "failing",
+          "conclusion": "failure",
+          "workflow": "CI",
+          "updatedAt": "2026-08-26T16:44:33Z",
+          "url": "https://github.com/majaber1/saudi-school-finder/actions/runs/32990081460"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "live-health",
+        "readinessHints": {
+          "mode": "demo-ready",
+          "schoolData": "static-demo",
+          "auth": "demo-only",
+          "database": "not-integrated",
+          "ai": "not-integrated"
+        }
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:24:03Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:24:03Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://saudi-school-finder.vercel.app/api/health",
+          "ok": false,
+          "httpStatus": 404,
+          "latencyMs": 141,
+          "body": "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/516179c206b2c30e.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack-68f22649503f8e75.js\"/><script src=\"/_next/static/chunks/4bd1b696-43910567a2c03e2a.js\" async=\"\"></script><script src=\"/_next/static/chunks/684-dd92b1db18843ee1.js\" async=\"\"></script><script src=\"/_next/static/chunks/main-app-c9779a9cf3f89b5e.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><title>404: This page could not be found.</title><title>Saudi School Finder | دليل مدارس السعودية</title><meta name=\"description\" content=\"ابحث، قارن، واختر المدرسة الأنسب لطفلك في السعودية.\"/><script src=\"/_next/static/chunks/polyfills-42372ed130431b0a.js\" noModule=\"\"></script></head><body><div style=\"font-family:system-ui,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri",
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "manifest readiness hints"
+      },
+      "runtime": {
+        "state": "degraded",
+        "summary": "At least one declared health endpoint is failing (404)."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/MAJ-Consultant",
+      "product": "MAJ Consultant",
+      "productSlug": "maj-consultant",
+      "classification": "Active marketing asset",
+      "state": "active",
+      "action": "Track site/content freshness and qualified leads; do not count local editor as backend auth.",
+      "productionUrl": "https://majaber1.github.io/MAJ-Consultant/",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "e8fd22ceee8c26b939ee3da2a4316ba0b667f721",
+        "headMessage": "Define MAJ Consultant static source of truth",
+        "headCommittedAt": "2026-08-26T16:22:21Z",
+        "repoUpdatedAt": "2026-08-26T16:22:56Z",
+        "repoPushedAt": "2026-08-26T16:22:22Z",
+        "htmlUrl": "https://github.com/majaber1/MAJ-Consultant",
+        "ci": {
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "pages build and deployment",
+          "updatedAt": "2026-08-26T16:23:29Z",
+          "url": "https://github.com/majaber1/MAJ-Consultant/actions/runs/32988011245"
+        }
+      },
+      "manifest": {
+        "state": "present",
+        "schemaVersion": 1,
+        "runtimePolicy": "http-static-health",
+        "readinessHints": {
+          "runtime": "static",
+          "backend": "not-required",
+          "database": "not-required",
+          "admin": "local-browser-editor-only"
+        }
+      },
+      "docs": {
+        "readme": {
+          "state": "present",
+          "path": "README.md",
+          "lastCommitAt": "2026-08-26T16:22:21Z",
+          "stale": false
+        },
+        "architecture": {
+          "state": "present",
+          "path": "docs/ARCHITECTURE.md",
+          "lastCommitAt": "2026-08-26T16:22:21Z",
+          "stale": false
+        }
+      },
+      "health": [
+        {
+          "url": "https://majaber1.github.io/MAJ-Consultant/health.json",
+          "ok": true,
+          "httpStatus": 200,
+          "latencyMs": 56,
+          "body": {
+            "status": "ready",
+            "service": "maj-consultant",
+            "backend": "not-present",
+            "database": "not-required"
+          },
+          "error": null
+        }
+      ],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "static",
+        "summary": "Static deployment health is healthy; no backend is claimed."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/majaber1",
+      "product": "Jaber Dashboard",
+      "productSlug": "jaber-dashboard",
+      "classification": "Active internal product",
+      "state": "active",
+      "action": "Keep this dashboard generated from repository manifests and live health rather than hardcoded runtime claims.",
+      "productionUrl": "https://jaber-dashboard-v2.vercel.app",
+      "github": {
+        "accessible": true,
+        "archived": false,
+        "visibility": "public",
+        "defaultBranch": "main",
+        "headSha": "4b6af0032413e87563d9deaa2aecc1d5d90ef396",
+        "headMessage": "Document portfolio sync policy",
+        "headCommittedAt": "2026-08-26T17:14:48Z",
+        "repoUpdatedAt": "2026-08-26T17:17:01Z",
+        "repoPushedAt": "2026-08-26T17:19:40Z",
+        "htmlUrl": "https://github.com/majaber1/majaber1",
+        "ci": {
+          "state": "running",
+          "conclusion": null,
+          "workflow": "Portfolio Source of Truth Sync",
+          "updatedAt": "2026-08-26T17:19:13Z",
+          "url": "https://github.com/majaber1/majaber1/actions/runs/32993411188"
+        }
+      },
+      "manifest": {
+        "state": "missing",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "unverified",
+        "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/proposalpilot-ai",
+      "product": "ProposalPilot AI",
+      "productSlug": "proposalpilot-ai",
+      "classification": "Archived legacy product",
+      "state": "archive",
+      "action": "Keep archived unless deliberately revived.",
+      "productionUrl": null,
+      "github": {
+        "accessible": false,
+        "archived": null,
+        "visibility": null,
+        "defaultBranch": "main",
+        "headSha": null,
+        "headMessage": null,
+        "headCommittedAt": null,
+        "repoUpdatedAt": null,
+        "repoPushedAt": null,
+        "htmlUrl": "https://github.com/majaber1/proposalpilot-ai",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "unavailable",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "archived",
+        "summary": "Archived / historical repository; excluded from active product KPIs."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/resume-check",
+      "product": "ResumeCheck",
+      "productSlug": "resume-check",
+      "classification": "Archived legacy product",
+      "state": "archive",
+      "action": "Keep archived unless deliberately revived.",
+      "productionUrl": null,
+      "github": {
+        "accessible": false,
+        "archived": null,
+        "visibility": null,
+        "defaultBranch": "main",
+        "headSha": null,
+        "headMessage": null,
+        "headCommittedAt": null,
+        "repoUpdatedAt": null,
+        "repoPushedAt": null,
+        "htmlUrl": "https://github.com/majaber1/resume-check",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "unavailable",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "archived",
+        "summary": "Archived / historical repository; excluded from active product KPIs."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/iso27001-compliance-automation",
+      "product": "Multazim historical component",
+      "productSlug": null,
+      "classification": "Archived / merged component",
+      "state": "archive",
+      "action": "Preserve history; use Multazim AI as canonical product.",
+      "productionUrl": null,
+      "github": {
+        "accessible": false,
+        "archived": null,
+        "visibility": null,
+        "defaultBranch": "main",
+        "headSha": null,
+        "headMessage": null,
+        "headCommittedAt": null,
+        "repoUpdatedAt": null,
+        "repoPushedAt": null,
+        "htmlUrl": "https://github.com/majaber1/iso27001-compliance-automation",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "unavailable",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "archived",
+        "summary": "Archived / historical repository; excluded from active product KPIs."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/multazim-ai",
+      "product": "Multazim placeholder",
+      "productSlug": null,
+      "classification": "Archived placeholder",
+      "state": "archive",
+      "action": "Keep archived; canonical implementation is multazim-ai-mvp.",
+      "productionUrl": null,
+      "github": {
+        "accessible": false,
+        "archived": null,
+        "visibility": null,
+        "defaultBranch": "main",
+        "headSha": null,
+        "headMessage": null,
+        "headCommittedAt": null,
+        "repoUpdatedAt": null,
+        "repoPushedAt": null,
+        "htmlUrl": "https://github.com/majaber1/multazim-ai",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "unavailable",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "archived",
+        "summary": "Archived / historical repository; excluded from active product KPIs."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    },
+    {
+      "repo": "majaber1/Private-Coach",
+      "product": "Private Coach placeholder",
+      "productSlug": null,
+      "classification": "Archived placeholder",
+      "state": "archive",
+      "action": "Keep archived; canonical implementation is private-coach-v4.",
+      "productionUrl": null,
+      "github": {
+        "accessible": false,
+        "archived": null,
+        "visibility": null,
+        "defaultBranch": "main",
+        "headSha": null,
+        "headMessage": null,
+        "headCommittedAt": null,
+        "repoUpdatedAt": null,
+        "repoPushedAt": null,
+        "htmlUrl": "https://github.com/majaber1/Private-Coach",
+        "ci": {
+          "state": "unknown",
+          "conclusion": null,
+          "workflow": null,
+          "updatedAt": null,
+          "url": null
+        }
+      },
+      "manifest": {
+        "state": "unavailable",
+        "schemaVersion": null,
+        "runtimePolicy": null,
+        "readinessHints": {}
+      },
+      "docs": {
+        "readme": {
+          "state": "unverified",
+          "path": "README.md",
+          "lastCommitAt": null,
+          "stale": null
+        },
+        "architecture": {
+          "state": "unverified",
+          "path": null,
+          "lastCommitAt": null,
+          "stale": null
+        }
+      },
+      "health": [],
+      "storage": {
+        "state": "unverified",
+        "provider": "unverified",
+        "evidence": "no safe storage signal returned by health"
+      },
+      "runtime": {
+        "state": "archived",
+        "summary": "Archived / historical repository; excluded from active product KPIs."
+      },
+      "checkedAt": "2026-08-26T17:19:18.637Z"
+    }
+  ]
 }
