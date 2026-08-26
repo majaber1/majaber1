@@ -11,6 +11,14 @@ const stateStyle: Record<RepoPortfolioState, string> = {
   support: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
 };
 
+const canonicalSlugOverrides: Record<string, string> = {
+  'multazim-ai': 'multazim',
+  'minibites-ai': 'kiswani-ai-studio',
+  'playmotion-events': 'playmotion',
+};
+
+const resolveProjectSlug = (slug?: string) => slug ? (canonicalSlugOverrides[slug] ?? slug) : undefined;
+
 export default function AuditPage() {
   const { locale } = useLocale();
   const ar = locale === 'ar';
@@ -70,38 +78,41 @@ export default function AuditPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[var(--color-border-primary)]/70">
-              {repositoryAudit.map((row) => (
-                <tr key={row.repo} className="align-top hover:bg-[var(--color-bg-tertiary)]/50 transition-colors">
-                  <td className="px-4 py-3">
-                    <div className="font-mono text-xs text-[var(--color-text-primary)]">{row.repo}</div>
-                  </td>
-                  <td className="px-4 py-3">
-                    {row.productSlug ? (
-                      <Link href={`/projects/${row.productSlug}`} className="text-sm font-semibold text-[var(--color-accent-light)] hover:underline">
-                        {row.product}
-                      </Link>
-                    ) : (
-                      <span className="text-sm font-semibold text-[var(--color-text-primary)]">{row.product}</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className={`inline-flex rounded-md border px-2 py-1 text-[10px] font-bold ${stateStyle[row.state]}`}>
-                      {row.classification}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[240px]">{row.githubStatus}</td>
-                  <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[290px]">{row.runtimeStatus}</td>
-                  <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-primary)] max-w-[300px]">{row.action}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex flex-col items-start gap-1.5 text-xs">
-                      <a href={`https://github.com/${row.repo}`} target="_blank" rel="noreferrer" className="text-[var(--color-accent-light)] hover:underline">GitHub ↗</a>
-                      {row.vercelUrl && (
-                        <a href={row.vercelUrl} target="_blank" rel="noreferrer" className="text-[var(--color-accent-light)] hover:underline">Vercel ↗</a>
+              {repositoryAudit.map((row) => {
+                const projectSlug = resolveProjectSlug(row.productSlug);
+                return (
+                  <tr key={row.repo} className="align-top hover:bg-[var(--color-bg-tertiary)]/50 transition-colors">
+                    <td className="px-4 py-3">
+                      <div className="font-mono text-xs text-[var(--color-text-primary)]">{row.repo}</div>
+                    </td>
+                    <td className="px-4 py-3">
+                      {projectSlug ? (
+                        <Link href={`/projects/${projectSlug}`} className="text-sm font-semibold text-[var(--color-accent-light)] hover:underline">
+                          {row.product}
+                        </Link>
+                      ) : (
+                        <span className="text-sm font-semibold text-[var(--color-text-primary)]">{row.product}</span>
                       )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`inline-flex rounded-md border px-2 py-1 text-[10px] font-bold ${stateStyle[row.state]}`}>
+                        {row.classification}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[240px]">{row.githubStatus}</td>
+                    <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[290px]">{row.runtimeStatus}</td>
+                    <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-primary)] max-w-[300px]">{row.action}</td>
+                    <td className="px-4 py-3">
+                      <div className="flex flex-col items-start gap-1.5 text-xs">
+                        <a href={`https://github.com/${row.repo}`} target="_blank" rel="noreferrer" className="text-[var(--color-accent-light)] hover:underline">GitHub ↗</a>
+                        {row.vercelUrl && (
+                          <a href={row.vercelUrl} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">{ar ? 'فتح التطبيق ↗' : 'Live App ↗'}</a>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
