@@ -12,6 +12,7 @@ export default function Navigation() {
   const links = [
     { href: '/', label: t('nav.portfolio') },
     { href: '/focus', label: t('nav.focus') },
+    { href: '/audit', label: locale === 'ar' ? 'التدقيق' : 'Audit' },
   ];
 
   return (
@@ -27,7 +28,7 @@ export default function Navigation() {
                 <span className="text-sm font-semibold text-[var(--color-text-primary)]">
                   {t('app.title')}
                 </span>
-                <span className="ml-2 text-xs text-[var(--color-text-tertiary)]">v2.0</span>
+                <span className="ml-2 text-xs text-[var(--color-text-tertiary)]">v2.1 Audit</span>
               </div>
             </Link>
 
