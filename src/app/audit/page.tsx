@@ -3,12 +3,19 @@
 import Link from 'next/link';
 import { AUDIT_DATE } from '@/data/projects';
 import { repositoryAudit, repositoryAuditSummary, type RepoPortfolioState } from '@/data/repository-audit';
+import { storageVerification } from '@/data/storage-verification';
 import { useLocale } from '@/lib/locale-context';
 
 const stateStyle: Record<RepoPortfolioState, string> = {
   active: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
   archive: 'border-slate-500/30 bg-slate-500/10 text-slate-300',
   support: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+};
+
+const storageStyle = {
+  configured: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  not_configured: 'border-red-500/30 bg-red-500/10 text-red-400',
+  unverified: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
 };
 
 const canonicalSlugOverrides: Record<string, string> = {
@@ -65,13 +72,14 @@ export default function AuditPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[1180px] w-full text-left rtl:text-right">
+          <table className="min-w-[1360px] w-full text-left rtl:text-right">
             <thead className="bg-[var(--color-bg-tertiary)] text-[10px] uppercase tracking-wide text-[var(--color-text-tertiary)]">
               <tr>
                 <th className="px-4 py-3 font-semibold">Repo</th>
                 <th className="px-4 py-3 font-semibold">{ar ? 'المنتج الحقيقي' : 'Canonical product'}</th>
                 <th className="px-4 py-3 font-semibold">{ar ? 'التصنيف' : 'Classification'}</th>
                 <th className="px-4 py-3 font-semibold">GitHub</th>
+                <th className="px-4 py-3 font-semibold">{ar ? 'التخزين' : 'Storage'}</th>
                 <th className="px-4 py-3 font-semibold">{ar ? 'الحالة الحية' : 'Runtime status'}</th>
                 <th className="px-4 py-3 font-semibold">{ar ? 'الإجراء التالي' : 'Next action'}</th>
                 <th className="px-4 py-3 font-semibold">{ar ? 'روابط' : 'Links'}</th>
@@ -80,6 +88,7 @@ export default function AuditPage() {
             <tbody className="divide-y divide-[var(--color-border-primary)]/70">
               {repositoryAudit.map((row) => {
                 const projectSlug = resolveProjectSlug(row.productSlug);
+                const storage = projectSlug ? storageVerification[projectSlug] : undefined;
                 return (
                   <tr key={row.repo} className="align-top hover:bg-[var(--color-bg-tertiary)]/50 transition-colors">
                     <td className="px-4 py-3">
@@ -100,6 +109,22 @@ export default function AuditPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[240px]">{row.githubStatus}</td>
+                    <td className="px-4 py-3 text-xs leading-5 max-w-[220px]">
+                      {storage ? (
+                        <div title={storage.evidence}>
+                          <span className={`inline-flex rounded-md border px-2 py-1 text-[10px] font-bold ${storageStyle[storage.state]}`}>
+                            {storage.state === 'configured'
+                              ? (ar ? 'مفعّل' : 'CONFIGURED')
+                              : storage.state === 'not_configured'
+                                ? (ar ? 'غير مربوط' : 'NOT CONFIGURED')
+                                : (ar ? 'غير متحقق' : 'UNVERIFIED')}
+                          </span>
+                          <div className="mt-1 text-[10px] text-[var(--color-text-tertiary)]">{storage.provider}</div>
+                        </div>
+                      ) : (
+                        <span className="text-[10px] text-[var(--color-text-tertiary)]">—</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-secondary)] max-w-[290px]">{row.runtimeStatus}</td>
                     <td className="px-4 py-3 text-xs leading-5 text-[var(--color-text-primary)] max-w-[300px]">{row.action}</td>
                     <td className="px-4 py-3">
