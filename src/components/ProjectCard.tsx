@@ -5,7 +5,7 @@ import type { Project } from '@/types/project';
 import { getStatusColor, cn, countByStatus } from '@/lib/utils';
 import { getPriorityRecommendation } from '@/lib/priority';
 import { useLocale } from '@/lib/locale-context';
-import { storageVerification } from '@/data/storage-verification';
+import { getOperationalProject, runtimeLabel } from '@/data/operational';
 import ScoreRing from './ScoreRing';
 import LifecycleTracker from './LifecycleTracker';
 
@@ -26,6 +26,17 @@ const storageColors = {
   unverified: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
 };
 
+const runtimeColors: Record<string, string> = {
+  healthy: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  static: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  mvp: 'border-blue-500/30 bg-blue-500/10 text-blue-400',
+  partial: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+  degraded: 'border-orange-500/30 bg-orange-500/10 text-orange-400',
+  unhealthy: 'border-red-500/30 bg-red-500/10 text-red-400',
+  unverified: 'border-slate-500/30 bg-slate-500/10 text-slate-300',
+  archived: 'border-slate-500/30 bg-slate-500/10 text-slate-400',
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
   const { locale } = useLocale();
   const ar = locale === 'ar';
@@ -33,31 +44,45 @@ export default function ProjectCard({ project }: { project: Project }) {
   const blockers = countByStatus(project.tasks, 'blocker');
   const pending = countByStatus(project.tasks, 'pending');
   const resolved = countByStatus(project.tasks, 'resolved');
-  const liveUrl = project.vercel?.productionUrl;
-  const githubUrl = project.github?.repo ? `https://github.com/${project.github.repo}` : undefined;
-  const storage = storageVerification[project.slug];
+  const operational = getOperationalProject(project.slug);
+  const liveUrl = operational?.productionUrl || project.vercel?.productionUrl;
+  const githubUrl = operational?.github.htmlUrl || (project.github?.repo ? `https://github.com/${project.github.repo}` : undefined);
+  const storage = operational?.storage;
 
   return (
     <div className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-5 transition-all hover:border-[var(--color-border-accent)] hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5">
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
             <Link href={`/projects/${project.slug}`} className="text-base font-semibold text-[var(--color-text-primary)] truncate hover:text-[var(--color-accent-light)]">
               {project.name}
             </Link>
             <span className={cn('inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold', getStatusColor(project.status))}>
               {project.status}
             </span>
+            {operational && (
+              <span
+                className={cn('inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-bold', runtimeColors[operational.runtime.state] || runtimeColors.unverified)}
+                title={operational.runtime.summary}
+              >
+                OPS {runtimeLabel(operational.runtime.state)}
+              </span>
+            )}
           </div>
           <p className="text-xs text-[var(--color-text-tertiary)] line-clamp-1">{project.description}</p>
         </div>
         <ScoreRing score={project.scores.priority} size={52} />
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 flex flex-wrap gap-2">
         <span className={cn('inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-bold tracking-wide', recColors[rec] || recColors['MONITOR'])}>
           {rec}
         </span>
+        {operational?.github.headSha && (
+          <span className="inline-flex items-center rounded-md border border-[var(--color-border-primary)] px-2 py-0.5 font-mono text-[9px] text-[var(--color-text-tertiary)]">
+            {operational.github.defaultBranch}@{operational.github.headSha.slice(0, 8)}
+          </span>
+        )}
       </div>
 
       <LifecycleTracker lifecycle={project.lifecycle} compact />
@@ -72,17 +97,24 @@ export default function ProjectCard({ project }: { project: Project }) {
         <span className="text-[var(--color-text-secondary)]">{ar ? 'التالي:' : 'Next:'}</span> {project.nextAction}
       </div>
 
+      {operational && (
+        <div className="mt-3 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-tertiary)]/40 p-2.5" title={operational.runtime.summary}>
+          <div className="text-[10px] font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">{ar ? 'المصدر التشغيلي' : 'Operational source'}</div>
+          <div className="mt-1 text-[11px] leading-4 text-[var(--color-text-secondary)] line-clamp-2">{operational.runtime.summary}</div>
+        </div>
+      )}
+
       {storage && (
-        <div className="mt-3 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-tertiary)]/40 p-2.5" title={storage.evidence}>
+        <div className="mt-2 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-tertiary)]/40 p-2.5" title={storage.evidence}>
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
               {ar ? 'التخزين' : 'Storage'}
             </span>
             <span className={cn('inline-flex rounded-md border px-2 py-0.5 text-[10px] font-bold', storageColors[storage.state])}>
               {storage.state === 'configured'
-                ? (ar ? 'R2 مفعّل' : 'R2 CONFIGURED')
+                ? (ar ? 'مفعّل' : 'CONFIGURED')
                 : storage.state === 'not_configured'
-                  ? (ar ? 'R2 غير مربوط' : 'R2 NOT CONFIGURED')
+                  ? (ar ? 'غير مربوط' : 'NOT CONFIGURED')
                   : (ar ? 'غير متحقق' : 'UNVERIFIED')}
             </span>
             <span className="text-[10px] text-[var(--color-text-tertiary)]">{storage.provider}</span>

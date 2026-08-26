@@ -1,0 +1,54 @@
+name: Portfolio Source of Truth Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'portfolio.registry.json'
+      - 'scripts/sync-portfolio.mjs'
+      - '.github/workflows/portfolio-sync.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portfolio-source-of-truth-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout dashboard
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate operational snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/sync-portfolio.mjs
+
+      - name: Validate generated JSON
+        run: node -e "const s=require('./src/data/portfolio.generated.json'); if(!Array.isArray(s.projects)||s.projects.length<15) throw new Error('portfolio snapshot incomplete'); console.log('snapshot',s.projects.length,s.generatedAt)"
+
+      - name: Commit refreshed snapshot
+        run: |
+          if git diff --quiet -- src/data/portfolio.generated.json; then
+            echo 'No operational changes to publish.'
+            exit 0
+          fi
+          git config user.name 'jaber-dashboard-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add src/data/portfolio.generated.json
+          git commit -m 'chore: refresh operational portfolio snapshot'
+          git push

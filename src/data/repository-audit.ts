@@ -1,4 +1,17 @@
+import registryJson from '../../portfolio.registry.json';
+import { getOperationalByRepo, operationalSnapshot, runtimeLabel, type StorageState } from './operational';
+
 export type RepoPortfolioState = 'active' | 'archive' | 'support';
+
+interface RegistryEntry {
+  repo: string;
+  product: string;
+  productSlug?: string;
+  classification: string;
+  state: RepoPortfolioState;
+  fallbackProductionUrl?: string;
+  action: string;
+}
 
 export interface RepositoryAuditRow {
   repo: string;
@@ -8,260 +21,86 @@ export interface RepositoryAuditRow {
   state: RepoPortfolioState;
   githubStatus: string;
   vercelUrl?: string;
+  runtimeState: string;
   runtimeStatus: string;
   action: string;
+  storageState: StorageState;
+  storageProvider: string;
+  storageEvidence: string;
+  manifestState: string;
+  readmeState: string;
+  architectureState: string;
+  ciState: string;
+  lastChecked?: string;
 }
 
-export const repositoryAudit: RepositoryAuditRow[] = [
-  {
-    repo: 'majaber1/qarar-ai-v10',
-    product: 'Qarar AI',
-    productSlug: 'qarar-ai',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main HEAD f465f77; backend Vercel entrypoint fix exists in the current repository',
-    vercelUrl: 'https://qarar-ai-v10.vercel.app',
-    runtimeStatus: 'BLOCKED — Qarar backend Vercel project Root Directory is set to backend, but the current repository has no backend directory; backend runtime and durable storage cannot be verified',
-    action: 'Clear/fix the Qarar backend Root Directory, redeploy current main, verify FastAPI health and S3/R2 storage, then rerun the full production decision journey.',
-  },
-  {
-    repo: 'majaber1/saudi-business',
-    product: 'Saudi Business',
-    productSlug: 'saudi-business',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main 3977ffd; R2 vault, exports, eligibility updates and auction removal included',
-    vercelUrl: 'https://saudi-business-web.vercel.app',
-    runtimeStatus: 'READY — web + FastAPI production; PostgreSQL health verified and deployed SHA matches main',
-    action: 'Run a fresh-account E2E journey and move immediately to a narrow paid pilot.',
-  },
-  {
-    repo: 'majaber1/linkedin-ai-autoposter',
-    product: 'SignalPost',
-    productSlug: 'signalpost',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main 64a51ab; bilingual multi-channel foundation',
-    vercelUrl: 'https://linkedin-ai-autoposter-rouge.vercel.app',
-    runtimeStatus: 'READY — PostgreSQL, OpenAI, LinkedIn, durable persistence, automation and scheduler verified',
-    action: 'Fix permanent LinkedIn OAuth with a custom domain and recruit the first 5 real users.',
-  },
-  {
-    repo: 'majaber1/SponsorLoop',
-    product: 'SponsorLoop',
-    productSlug: 'sponsorloop',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main a3d686d; R2-aware health check deployed to production',
-    vercelUrl: 'https://sponsorloop-gold.vercel.app',
-    runtimeStatus: 'PARTIAL — DB connected; AI is deterministic fallback; Cloudflare R2 production credentials are verified missing; payments/e-sign are not configured',
-    action: 'Add the four R2 credentials to SponsorLoop Vercel production, configure production AI, then run one real brand/creator sponsorship workflow.',
-  },
-  {
-    repo: 'majaber1/eada-platform',
-    product: 'EADA',
-    productSlug: 'eada',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main 6a0edbf; backend APIs now exist; old static-only audit docs are stale',
-    vercelUrl: 'https://eada-platform.vercel.app',
-    runtimeStatus: 'READY foundation — DB/session health verified and Git/Vercel SHA synchronized',
-    action: 'Update stale architecture docs and prove one complete live server-backed asset workflow.',
-  },
-  {
-    repo: 'majaber1/scrap-ai',
-    product: 'Scrap AI',
-    productSlug: 'scrap-ai',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main 85033f6; R2-aware health check deployed; auth/AI/platform/upload/workflow APIs present',
-    vercelUrl: 'https://scrap-ai.vercel.app',
-    runtimeStatus: 'PARTIAL — DB/session are healthy; production AI is false; Cloudflare R2 production credentials are verified missing',
-    action: 'Add the four R2 credentials and production OpenAI key to Scrap AI Vercel, then execute intake → AI analysis → listing → offer/pickup journey.',
-  },
-  {
-    repo: 'majaber1/multazim-ai-mvp',
-    product: 'Multazim AI',
-    productSlug: 'multazim-ai',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main active; frontend and FastAPI are separate Vercel projects',
-    vercelUrl: 'https://multazim-ai-mvp.vercel.app',
-    runtimeStatus: 'PARTIAL — PostgreSQL persistence healthy, but API reports development/demo-header configuration and deployment sync requires verification',
-    action: 'Align production environment + main SHA and run organization/framework/evidence end-to-end QA.',
-  },
-  {
-    repo: 'majaber1/saudi-source',
-    product: 'Saudi Source',
-    productSlug: 'saudi-source',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main active',
-    vercelUrl: 'https://saudi-source.vercel.app',
-    runtimeStatus: 'READY foundation — production DB/session health verified',
-    action: 'Run a real supplier → buyer → deal workflow and validate the first sourcing use case.',
-  },
-  {
-    repo: 'majaber1/MiniBites-AI-Studio',
-    product: 'Kiswani / MiniBites AI Studio',
-    productSlug: 'minibites-ai',
-    classification: 'Active product family',
-    state: 'active',
-    githubStatus: 'main 94dfec2; one product family, not multiple portfolio apps',
-    vercelUrl: 'https://minibites-ai-studio.vercel.app',
-    runtimeStatus: 'READY deployment; provider/output quality still requires product-level verification',
-    action: 'Verify one complete production episode workflow and treat all branded variants as one product family.',
-  },
-  {
-    repo: 'majaber1/private-coach-v4',
-    product: 'Private Coach',
-    productSlug: 'private-coach',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'master active; current working implementation',
-    vercelUrl: 'https://private-coach-v4.vercel.app',
-    runtimeStatus: 'MVP — polished frontend/demo; marketplace/provider operations are not proven production services',
-    action: 'Implement one durable booking journey with real coach availability before calling it marketplace-ready.',
-  },
-  {
-    repo: 'majaber1/playmotion-events',
-    product: 'PlayMotion Events',
-    productSlug: 'playmotion-events',
-    classification: 'Active commercial site',
-    state: 'active',
-    githubStatus: 'main active; Vercel Git integration synchronized at last verified deploy',
-    vercelUrl: 'https://playmotion-events.vercel.app',
-    runtimeStatus: 'READY marketing/booking frontend; conversion and operational fulfillment need business validation',
-    action: 'Track inquiries/bookings and optimize only against real event leads and paid orders.',
-  },
-  {
-    repo: 'majaber1/whatsapp-agent-saas',
-    product: 'WhatsApp Agent SaaS',
-    productSlug: 'whatsapp-agent',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main active',
-    vercelUrl: 'https://whatsapp-agent-saas-five.vercel.app',
-    runtimeStatus: 'Deployed foundation; WhatsApp provider + real conversational workflow require re-verification',
-    action: 'Prove one real inbound WhatsApp conversation through provider, AI, persistence and operator handoff.',
-  },
-  {
-    repo: 'majaber1/cloudshift-ai',
-    product: 'CloudShift AI',
-    productSlug: 'cloudshift-ai',
-    classification: 'Active product',
-    state: 'active',
-    githubStatus: 'main active; full-stack/Docker foundation',
-    runtimeStatus: 'NO CURRENT VERIFIED VERCEL PRODUCTION TARGET in this audit',
-    action: 'Deploy a canonical production target and prove one migration/compliance assessment workflow.',
-  },
-  {
-    repo: 'majaber1/modpilot-ai',
-    product: 'ModPilot AI',
-    productSlug: 'modpilot-ai',
-    classification: 'Active MVP',
-    state: 'active',
-    githubStatus: 'main active',
-    vercelUrl: 'https://modpilot-ai.vercel.app',
-    runtimeStatus: 'MVP — mobile/web preview exists but core AI/fitment integrations are mock',
-    action: 'Replace one mock identification/recommendation path with a real provider integration.',
-  },
-  {
-    repo: 'majaber1/saudi-school-finder',
-    product: 'Saudi School Finder',
-    productSlug: 'saudi-school-finder',
-    classification: 'Active MVP',
-    state: 'active',
-    githubStatus: 'main active',
-    vercelUrl: 'https://saudi-school-finder.vercel.app',
-    runtimeStatus: 'MVP — discovery/compare UI deployed; school data remains sample/demo',
-    action: 'Acquire an authoritative maintainable Saudi school-data source before deeper AI work.',
-  },
-  {
-    repo: 'majaber1/MAJ-Consultant',
-    product: 'MAJ Consultant',
-    productSlug: 'maj-consultant',
-    classification: 'Active marketing asset',
-    state: 'active',
-    githubStatus: 'main active',
-    runtimeStatus: 'Public consulting portfolio / knowledge hub; not a SaaS product',
-    action: 'Measure qualified leads rather than adding product features.',
-  },
-  {
-    repo: 'majaber1/majaber1',
-    product: 'Jaber Dashboard',
-    productSlug: 'jaber-dashboard',
-    classification: 'Active internal product',
-    state: 'active',
-    githubStatus: 'main contains the 2026-08-26 evidence-based portfolio audit and live application links',
-    vercelUrl: 'https://jaber-dashboard-v2.vercel.app',
-    runtimeStatus: 'Production V2.1 audit is live; storage-verification update is being validated for publication',
-    action: 'Publish storage verification, then automate authenticated GitHub/Vercel refresh.',
-  },
-  {
-    repo: 'majaber1/proposalpilot-ai',
-    product: 'ProposalPilot AI',
-    productSlug: 'proposalpilot-ai',
-    classification: 'Archived legacy product',
-    state: 'archive',
-    githubStatus: 'GitHub archived=true',
-    runtimeStatus: 'Do not count as an active independent product',
-    action: 'Keep archived unless there is a deliberate revival decision.',
-  },
-  {
-    repo: 'majaber1/resume-check',
-    product: 'ResumeCheck',
-    productSlug: 'resume-check',
-    classification: 'Archived legacy product',
-    state: 'archive',
-    githubStatus: 'GitHub archived=true',
-    runtimeStatus: 'Do not count as an active independent product',
-    action: 'Keep archived unless there is a deliberate revival decision.',
-  },
-  {
-    repo: 'majaber1/iso27001-compliance-automation',
-    product: 'Multazim AI',
-    productSlug: 'multazim-ai',
-    classification: 'Archived / merged component',
-    state: 'archive',
-    githubStatus: 'GitHub archived=true',
-    runtimeStatus: 'Treat as historical compliance component folded into Multazim, not another portfolio app',
-    action: 'Preserve history; keep Multazim AI as the canonical product.',
-  },
-  {
-    repo: 'majaber1/multazim-ai',
-    product: 'Multazim AI',
-    productSlug: 'multazim-ai',
-    classification: 'Archived placeholder',
-    state: 'archive',
-    githubStatus: 'Archived and size=0; canonical implementation is multazim-ai-mvp',
-    runtimeStatus: 'Not an independent application',
-    action: 'Keep archived and point portfolio references to multazim-ai-mvp.',
-  },
-  {
-    repo: 'majaber1/Private-Coach',
-    product: 'Private Coach',
-    productSlug: 'private-coach',
-    classification: 'Archived placeholder',
-    state: 'archive',
-    githubStatus: 'Archived and size=0; canonical implementation is private-coach-v4',
-    runtimeStatus: 'Not an independent application',
-    action: 'Keep archived and point portfolio references to private-coach-v4.',
-  },
-  {
-    repo: 'majaber1/freelance-profile-drafts',
-    product: 'Personal operations / content',
-    classification: 'Supporting utility',
-    state: 'support',
-    githubStatus: 'Active private notes/content repository',
-    runtimeStatus: 'Not a product and should not appear in product KPIs',
-    action: 'Keep outside the product portfolio; retain only as supporting material.',
-  },
-];
+const registry = registryJson as { schemaVersion: number; owner: string; projects: RegistryEntry[] };
+
+function docLabel(state: string, stale: boolean | null | undefined) {
+  if (state !== 'present') return state.toUpperCase();
+  return stale ? 'STALE' : 'CURRENT';
+}
+
+export const repositoryAudit: RepositoryAuditRow[] = registry.projects.map((entry) => {
+  const operational = getOperationalByRepo(entry.repo);
+  if (!operational) {
+    return {
+      repo: entry.repo,
+      product: entry.product,
+      productSlug: entry.productSlug,
+      classification: entry.classification,
+      state: entry.state,
+      githubStatus: 'Awaiting first automated sync — no runtime claim is inferred.',
+      vercelUrl: entry.fallbackProductionUrl,
+      runtimeState: entry.state === 'archive' ? 'archived' : 'unverified',
+      runtimeStatus: entry.state === 'archive'
+        ? 'ARCHIVED — excluded from active product KPIs.'
+        : 'UNVERIFIED — awaiting generated GitHub/health snapshot.',
+      action: entry.action,
+      storageState: 'unverified',
+      storageProvider: 'unverified',
+      storageEvidence: 'awaiting first automated sync',
+      manifestState: 'unverified',
+      readmeState: 'unverified',
+      architectureState: 'unverified',
+      ciState: 'unknown',
+    };
+  }
+
+  const sha = operational.github.headSha?.slice(0, 8) || 'unknown';
+  const readme = docLabel(operational.docs.readme.state, operational.docs.readme.stale);
+  const architecture = docLabel(operational.docs.architecture.state, operational.docs.architecture.stale);
+  const ci = operational.github.ci.state.toUpperCase();
+  const manifest = operational.manifest.state.toUpperCase();
+
+  return {
+    repo: entry.repo,
+    product: entry.product,
+    productSlug: entry.productSlug,
+    classification: entry.classification,
+    state: entry.state,
+    githubStatus: `${operational.github.defaultBranch || 'branch?'} HEAD ${sha} · manifest ${manifest} · README ${readme} · architecture ${architecture} · CI ${ci}`,
+    vercelUrl: operational.productionUrl || entry.fallbackProductionUrl,
+    runtimeState: operational.runtime.state,
+    runtimeStatus: `${runtimeLabel(operational.runtime.state)} — ${operational.runtime.summary}`,
+    action: entry.action,
+    storageState: operational.storage.state,
+    storageProvider: operational.storage.provider,
+    storageEvidence: operational.storage.evidence,
+    manifestState: operational.manifest.state,
+    readmeState: readme,
+    architectureState: architecture,
+    ciState: operational.github.ci.state,
+    lastChecked: operational.checkedAt,
+  };
+});
 
 export const repositoryAuditSummary = {
   totalRepos: repositoryAudit.length,
   activePortfolio: repositoryAudit.filter((r) => r.state === 'active').length,
   archivedOrMerged: repositoryAudit.filter((r) => r.state === 'archive').length,
   supporting: repositoryAudit.filter((r) => r.state === 'support').length,
+  generatedAt: operationalSnapshot.generatedAt,
+  healthy: repositoryAudit.filter((r) => r.runtimeState === 'healthy' || r.runtimeState === 'static').length,
+  needsAttention: repositoryAudit.filter((r) => ['partial', 'degraded', 'unhealthy', 'unverified'].includes(r.runtimeState) && r.state === 'active').length,
 };

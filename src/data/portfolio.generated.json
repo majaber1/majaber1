@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "generator": "scripts/sync-portfolio.mjs",
+  "sourcePolicy": {
+    "code": "GitHub canonical branch",
+    "runtime": "declared live health or CI-only contract",
+    "docs": "manifest-declared README/architecture paths",
+    "commercial": "not generated here; remains manual/researched in projects.ts"
+  },
+  "projects": []
+}

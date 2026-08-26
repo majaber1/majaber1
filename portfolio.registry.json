@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "owner": "majaber1",
+  "projects": [
+    {"repo":"majaber1/qarar-ai-v10","product":"Qarar AI","productSlug":"qarar-ai","classification":"Active product","state":"active","action":"Use live deployment health and complete one durable production decision journey."},
+    {"repo":"majaber1/saudi-business","product":"Saudi Business","productSlug":"saudi-business","classification":"Active product","state":"active","action":"Use deployment health, then validate a fresh-account feasibility-to-export journey."},
+    {"repo":"majaber1/linkedin-ai-autoposter","product":"SignalPost","productSlug":"signalpost","classification":"Active product","state":"active","action":"Keep runtime healthy and convert real users before expanding connectors."},
+    {"repo":"majaber1/SponsorLoop","product":"SponsorLoop","productSlug":"sponsorloop","classification":"Active product","state":"active","action":"Resolve any health-reported storage/AI dependencies and prove one real sponsorship deal journey."},
+    {"repo":"majaber1/eada-platform","product":"EADA","productSlug":"eada","classification":"Active product","state":"active","action":"Prove one complete server-backed asset disposition workflow."},
+    {"repo":"majaber1/scrap-ai","product":"Scrap AI","productSlug":"scrap-ai","classification":"Active product","state":"active","action":"Resolve health-reported AI/storage gaps and prove intake-to-completion workflow."},
+    {"repo":"majaber1/multazim-ai-mvp","product":"Multazim AI","productSlug":"multazim-ai","classification":"Active product","state":"active","action":"Treat current MVP health honestly; integrate durable identity/persistence before production claims."},
+    {"repo":"majaber1/saudi-source","product":"Saudi Source","productSlug":"saudi-source","classification":"Active product","state":"active","action":"Prove one supplier-to-buyer export deal with durable evidence."},
+    {"repo":"majaber1/MiniBites-AI-Studio","product":"Kiswani / MiniBites AI Studio","productSlug":"minibites-ai","classification":"Active product family","state":"active","action":"Use public health to verify Redis/media/provider readiness and complete one production episode."},
+    {"repo":"majaber1/private-coach-v4","product":"Private Coach","productSlug":"private-coach","classification":"Active product","state":"active","fallbackProductionUrl":"https://private-coach-v4.vercel.app","action":"Verify frontend-to-backend binding and one durable booking journey."},
+    {"repo":"majaber1/playmotion-events","product":"PlayMotion Events","productSlug":"playmotion-events","classification":"Active commercial site","state":"active","fallbackProductionUrl":"https://playmotion-events.vercel.app","action":"Keep static site healthy; connect booking/lead delivery before calling reservations operational."},
+    {"repo":"majaber1/whatsapp-agent-saas","product":"WhatsApp Agent SaaS","productSlug":"whatsapp-agent","classification":"Active product","state":"active","fallbackProductionUrl":"https://whatsapp-agent-saas-five.vercel.app","action":"Prove frontend/backend, DB, AI and real WhatsApp dependencies independently."},
+    {"repo":"majaber1/cloudshift-ai","product":"CloudShift AI","productSlug":"cloudshift-ai","classification":"Active product","state":"active","action":"Keep broken-source repair separate until validated; then establish a canonical production target."},
+    {"repo":"majaber1/modpilot-ai","product":"ModPilot AI","productSlug":"modpilot-ai","classification":"Active mobile MVP","state":"active","action":"Use CI/build health; do not claim backend/AI readiness until integrations exist."},
+    {"repo":"majaber1/saudi-school-finder","product":"Saudi School Finder","productSlug":"saudi-school-finder","classification":"Active MVP","state":"active","fallbackProductionUrl":"https://saudi-school-finder.vercel.app","action":"Keep demo-data status explicit and obtain an authoritative school-data source before production claims."},
+    {"repo":"majaber1/MAJ-Consultant","product":"MAJ Consultant","productSlug":"maj-consultant","classification":"Active marketing asset","state":"active","action":"Track site/content freshness and qualified leads; do not count local editor as backend auth."},
+    {"repo":"majaber1/majaber1","product":"Jaber Dashboard","productSlug":"jaber-dashboard","classification":"Active internal product","state":"active","fallbackProductionUrl":"https://jaber-dashboard-v2.vercel.app","action":"Keep this dashboard generated from repository manifests and live health rather than hardcoded runtime claims."},
+    {"repo":"majaber1/proposalpilot-ai","product":"ProposalPilot AI","productSlug":"proposalpilot-ai","classification":"Archived legacy product","state":"archive","action":"Keep archived unless deliberately revived."},
+    {"repo":"majaber1/resume-check","product":"ResumeCheck","productSlug":"resume-check","classification":"Archived legacy product","state":"archive","action":"Keep archived unless deliberately revived."},
+    {"repo":"majaber1/iso27001-compliance-automation","product":"Multazim historical component","classification":"Archived / merged component","state":"archive","action":"Preserve history; use Multazim AI as canonical product."},
+    {"repo":"majaber1/multazim-ai","product":"Multazim placeholder","classification":"Archived placeholder","state":"archive","action":"Keep archived; canonical implementation is multazim-ai-mvp."},
+    {"repo":"majaber1/Private-Coach","product":"Private Coach placeholder","classification":"Archived placeholder","state":"archive","action":"Keep archived; canonical implementation is private-coach-v4."}
+  ]
+}

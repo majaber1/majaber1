@@ -1,90 +1,121 @@
 # Jaber Dashboard V2 — Product Control Tower
 
-Portfolio dashboard, PMO, technical readiness monitor, GitHub/Vercel monitor, market intelligence dashboard, commercial strategy dashboard, and daily execution guide.
+Jaber Dashboard is the operating control tower for the application portfolio: product prioritization, technical readiness, repository/runtime truth, market/commercial planning, and daily execution.
 
 ## Architecture
 
-- **Framework**: Next.js 15 + TypeScript + Tailwind CSS v4
-- **Data**: Typed project data in `src/data/projects.ts`
-- **Deployment**: Vercel (primary), GitHub for source control
-- **Persistence**: JSON data fallback (database abstraction ready)
+- **Framework**: Next.js 16 + TypeScript + Tailwind CSS v4
+- **Commercial/product planning data**: `src/data/projects.ts`
+- **Canonical repository registry**: `portfolio.registry.json`
+- **Operational generator**: `scripts/sync-portfolio.mjs`
+- **Generated operational snapshot**: `src/data/portfolio.generated.json`
+- **Operational UI adapter**: `src/data/operational.ts`
+- **Automated refresh**: `.github/workflows/portfolio-sync.yml`
+- **Deployment**: Vercel (primary), GitHub `main` as source control
 
-## Getting Started
+## Source-of-truth policy
+
+Operational readiness is **not** taken from manually maintained dashboard prose or commercial scores.
+
+For every canonical repository, the sync process checks:
+
+1. GitHub default branch and current HEAD SHA.
+2. `.jaber-dashboard.json` manifest.
+3. Manifest-declared README and architecture document presence/freshness.
+4. Latest GitHub Actions state when available.
+5. Manifest-declared public health endpoint(s), or a CI/build-only contract for products such as mobile MVPs.
+6. Safe dependency signals such as database, storage and AI readiness without storing secrets.
+
+Runtime states are intentionally distinct:
+
+- `HEALTHY` — declared health is reachable with no critical dependency failure.
+- `PARTIAL` — core runtime responds but required/important capabilities remain unconfigured, demo-only, stateless or unintegrated.
+- `DEGRADED` — declared health reports a critical dependency problem or a health endpoint is failing.
+- `UNHEALTHY` — declared health cannot be reached or CI/build fails.
+- `STATIC` — static site health is valid and no backend is claimed.
+- `MVP / CI` — build/CI is the appropriate signal; production backend readiness is not claimed.
+- `UNVERIFIED` — the source contract or evidence is missing.
+- `ARCHIVED` — historical repository excluded from active product KPIs.
+
+Market sizing, pricing, GTM, revenue potential and commercial priority remain separate because they require customer validation and/or sourced market research.
+
+## Automatic refresh
+
+The portfolio source-of-truth workflow runs:
+
+- every **6 hours**,
+- manually with `workflow_dispatch`,
+- when the registry, generator or workflow definition changes on `main`.
+
+It writes only the safe generated snapshot back to the dashboard repository. No application credentials are copied into Jaber Dashboard.
+
+Manual local refresh:
+
+```bash
+npm run sync:portfolio
+```
+
+## Getting started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000.
 
-## Project Structure
+Validation:
 
+```bash
+npm run typecheck
+npm run lint
+npm run build
 ```
+
+## Project structure
+
+```text
+portfolio.registry.json              Canonical repo/product registry
+scripts/sync-portfolio.mjs           GitHub/docs/CI/health snapshot generator
+.github/workflows/portfolio-sync.yml Six-hour refresh workflow
 src/
-├── app/                    # Next.js App Router pages
-│   ├── page.tsx           # Portfolio home
-│   ├── focus/page.tsx     # Daily focus page
-│   └── projects/[slug]/   # Project detail pages
-├── components/            # Reusable UI components
+├── app/
+│   ├── page.tsx                     Portfolio home
+│   ├── audit/page.tsx               Generated operational audit
+│   ├── focus/page.tsx               Daily focus
+│   └── projects/[slug]/             Product command pages
+├── components/
+│   └── ProjectCard.tsx              Commercial + generated operational state
 ├── data/
-│   └── projects.ts        # Project data (7 projects)
-├── lib/
-│   ├── priority.ts        # Priority scoring engine
-│   ├── i18n.ts           # AR/EN translations
-│   ├── locale-context.tsx # Locale provider
-│   └── utils.ts          # Utility functions
+│   ├── projects.ts                  Product/commercial planning data
+│   ├── portfolio.generated.json     Machine-generated operational truth
+│   ├── operational.ts               Typed operational helpers
+│   └── repository-audit.ts          Registry + generated snapshot renderer
 └── types/
-    └── project.ts         # TypeScript data model
+    └── project.ts
 ```
 
 ## Features
 
-- **Portfolio Overview**: KPI cards, filters, sorting, project cards
-- **Priority Engine**: Weighted scoring model (100 points) with transparent recommendations
-- **Daily Focus**: Today's recommended project, top 3 actions, blockers, quick wins
-- **Project Pages**: 9-tab command pages (Overview, Execution, Technical, Artifacts, Market, Commercial, Financial, Roadmap, Deployment)
-- **Artifact Monitor**: Readiness tracking across Product, Technical, QA, Business, Commercial
-- **Market Intelligence**: Competitor analysis, market opportunity, TAM/SAM/SOM
-- **Financial Engine**: Revenue scenarios, milestones, break-even calculations
-- **Opportunity Matrix**: Visual portfolio chart (effort vs revenue)
-- **GitHub/Vercel Monitoring**: Repository and deployment status tracking
-- **Data Provenance**: AUTO / MANUAL / ESTIMATED / RESEARCHED / UNVERIFIED badges
-- **AR/EN**: Full bilingual support with RTL
-- **Product Lifecycle**: 13-stage journey tracker per project
+- Portfolio overview, filters and sorting
+- Priority engine and daily focus
+- Product lifecycle, tasks, blockers and artifacts
+- Generated GitHub / README / Architecture / CI / health audit
+- Live application and GitHub links per canonical product
+- Runtime/storage badges that do not depend on commercial scores
+- Market and competitor planning with provenance labels
+- Financial and GTM planning
+- AR/EN with RTL support
+- Archived/placeholder repository de-duplication
 
-## Build
+## Deployment
 
-```bash
-npm run build
-```
+The production dashboard is deployed on Vercel. Pushes to `main` trigger the normal production deployment. The six-hour operational snapshot commits also trigger a new Vercel deployment when the generated state changes, keeping the displayed dashboard synchronized with the latest published snapshot.
 
-## Deploy
+## Safety rules
 
-Deployed to Vercel. Push to `main` triggers production deployment.
-
-## Data Model
-
-Projects are typed with comprehensive fields covering:
-- Identity, stage, status
-- Scores (product, technical, QA, deployment, commercial, artifacts, market, revenue, priority)
-- GitHub and Vercel integration info
-- 13-stage lifecycle tracker
-- Tasks (resolved, pending, blockers)
-- Artifacts with readiness status
-- Competitors with detailed analysis
-- Market opportunity with TAM/SAM/SOM
-- Commercial strategy with fastest path to first customer
-- Financial model with revenue milestones
-- Roadmap (this week through 90 days)
-- Data provenance for every important value
-
-## Projects Tracked
-
-1. Qarar AI
-2. Multazim AI
-3. Saudi Business
-4. Private Coach
-5. Mini Bites AI
-6. LinkedIn AI Post
-7. Jaber Dashboard (self-tracking)
+- Never place secrets, tokens, connection strings or private credentials in manifests or health responses.
+- Health endpoints expose configuration/readiness state only.
+- A successful HTTP response is not automatically classified as production-ready.
+- Missing evidence is displayed as `UNVERIFIED`; it is never inferred as healthy.
+- Archived and placeholder repos do not count as separate portfolio applications.
