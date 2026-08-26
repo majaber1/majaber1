@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "slug": "jaber-dashboard",
+  "product": "Jaber Dashboard",
+  "canonicalRepo": "majaber1/majaber1",
+  "branch": "main",
+  "vercelProject": "jaber-dashboard-v2",
+  "productionUrl": "https://jaber-dashboard-v2.vercel.app",
+  "healthUrls": [
+    "https://jaber-dashboard-v2.vercel.app/api/health"
+  ],
+  "readmePath": "README.md",
+  "architecturePath": "docs/ARCHITECTURE.md",
+  "sourcePolicy": {
+    "code": "github-main",
+    "runtime": "live-health",
+    "documentation": "repository"
+  },
+  "readinessHints": {
+    "runtime": "internal-control-tower",
+    "persistence": "generated-snapshot-plus-server-cache",
+    "operationalSync": "server-cache-6h+github-action-secondary"
+  }
+}

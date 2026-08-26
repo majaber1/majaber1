@@ -1,5 +1,5 @@
 import registryJson from '../../portfolio.registry.json';
-import { getOperationalByRepo, operationalSnapshot, runtimeLabel, type StorageState } from './operational';
+import { findOperationalByRepo, operationalSnapshot, runtimeLabel, type OperationalSnapshot, type StorageState } from './operational';
 
 export type RepoPortfolioState = 'active' | 'archive' | 'support';
 
@@ -34,73 +34,82 @@ export interface RepositoryAuditRow {
   lastChecked?: string;
 }
 
-const registry = registryJson as { schemaVersion: number; owner: string; projects: RegistryEntry[] };
+const registry = registryJson as unknown as { schemaVersion: number; owner: string; projects: RegistryEntry[] };
 
 function docLabel(state: string, stale: boolean | null | undefined) {
   if (state !== 'present') return state.toUpperCase();
-  return stale ? 'STALE' : 'CURRENT';
+  if (stale === true) return 'STALE';
+  if (stale === false) return 'CURRENT';
+  return 'PRESENT';
 }
 
-export const repositoryAudit: RepositoryAuditRow[] = registry.projects.map((entry) => {
-  const operational = getOperationalByRepo(entry.repo);
-  if (!operational) {
+export function buildRepositoryAudit(snapshot: OperationalSnapshot): RepositoryAuditRow[] {
+  return registry.projects.map((entry) => {
+    const operational = findOperationalByRepo(snapshot, entry.repo);
+    if (!operational) {
+      return {
+        repo: entry.repo,
+        product: entry.product,
+        productSlug: entry.productSlug,
+        classification: entry.classification,
+        state: entry.state,
+        githubStatus: 'Awaiting operational sync — no runtime claim is inferred.',
+        vercelUrl: entry.fallbackProductionUrl,
+        runtimeState: entry.state === 'archive' ? 'archived' : 'unverified',
+        runtimeStatus: entry.state === 'archive'
+          ? 'ARCHIVED — excluded from active product KPIs.'
+          : 'UNVERIFIED — awaiting GitHub/manifest/health evidence.',
+        action: entry.action,
+        storageState: 'unverified',
+        storageProvider: 'unverified',
+        storageEvidence: 'awaiting operational sync',
+        manifestState: 'unverified',
+        readmeState: 'unverified',
+        architectureState: 'unverified',
+        ciState: 'unknown',
+      };
+    }
+
+    const sha = operational.github.headSha?.slice(0, 8) || 'unknown';
+    const readme = docLabel(operational.docs.readme.state, operational.docs.readme.stale);
+    const architecture = docLabel(operational.docs.architecture.state, operational.docs.architecture.stale);
+    const ci = operational.github.ci.state.toUpperCase();
+    const manifest = operational.manifest.state.toUpperCase();
+
     return {
       repo: entry.repo,
       product: entry.product,
       productSlug: entry.productSlug,
       classification: entry.classification,
       state: entry.state,
-      githubStatus: 'Awaiting first automated sync — no runtime claim is inferred.',
-      vercelUrl: entry.fallbackProductionUrl,
-      runtimeState: entry.state === 'archive' ? 'archived' : 'unverified',
-      runtimeStatus: entry.state === 'archive'
-        ? 'ARCHIVED — excluded from active product KPIs.'
-        : 'UNVERIFIED — awaiting generated GitHub/health snapshot.',
+      githubStatus: `${operational.github.defaultBranch || 'branch?'} HEAD ${sha} · manifest ${manifest} · README ${readme} · architecture ${architecture} · CI ${ci}`,
+      vercelUrl: operational.productionUrl || entry.fallbackProductionUrl,
+      runtimeState: operational.runtime.state,
+      runtimeStatus: `${runtimeLabel(operational.runtime.state)} — ${operational.runtime.summary}`,
       action: entry.action,
-      storageState: 'unverified',
-      storageProvider: 'unverified',
-      storageEvidence: 'awaiting first automated sync',
-      manifestState: 'unverified',
-      readmeState: 'unverified',
-      architectureState: 'unverified',
-      ciState: 'unknown',
+      storageState: operational.storage.state,
+      storageProvider: operational.storage.provider,
+      storageEvidence: operational.storage.evidence,
+      manifestState: operational.manifest.state,
+      readmeState: readme,
+      architectureState: architecture,
+      ciState: operational.github.ci.state,
+      lastChecked: operational.checkedAt,
     };
-  }
+  });
+}
 
-  const sha = operational.github.headSha?.slice(0, 8) || 'unknown';
-  const readme = docLabel(operational.docs.readme.state, operational.docs.readme.stale);
-  const architecture = docLabel(operational.docs.architecture.state, operational.docs.architecture.stale);
-  const ci = operational.github.ci.state.toUpperCase();
-  const manifest = operational.manifest.state.toUpperCase();
-
+export function buildRepositoryAuditSummary(rows: RepositoryAuditRow[], generatedAt: string | null) {
   return {
-    repo: entry.repo,
-    product: entry.product,
-    productSlug: entry.productSlug,
-    classification: entry.classification,
-    state: entry.state,
-    githubStatus: `${operational.github.defaultBranch || 'branch?'} HEAD ${sha} · manifest ${manifest} · README ${readme} · architecture ${architecture} · CI ${ci}`,
-    vercelUrl: operational.productionUrl || entry.fallbackProductionUrl,
-    runtimeState: operational.runtime.state,
-    runtimeStatus: `${runtimeLabel(operational.runtime.state)} — ${operational.runtime.summary}`,
-    action: entry.action,
-    storageState: operational.storage.state,
-    storageProvider: operational.storage.provider,
-    storageEvidence: operational.storage.evidence,
-    manifestState: operational.manifest.state,
-    readmeState: readme,
-    architectureState: architecture,
-    ciState: operational.github.ci.state,
-    lastChecked: operational.checkedAt,
+    totalRepos: rows.length,
+    activePortfolio: rows.filter((r) => r.state === 'active').length,
+    archivedOrMerged: rows.filter((r) => r.state === 'archive').length,
+    supporting: rows.filter((r) => r.state === 'support').length,
+    generatedAt,
+    healthy: rows.filter((r) => r.runtimeState === 'healthy' || r.runtimeState === 'static').length,
+    needsAttention: rows.filter((r) => ['partial', 'degraded', 'unhealthy', 'unverified'].includes(r.runtimeState) && r.state === 'active').length,
   };
-});
+}
 
-export const repositoryAuditSummary = {
-  totalRepos: repositoryAudit.length,
-  activePortfolio: repositoryAudit.filter((r) => r.state === 'active').length,
-  archivedOrMerged: repositoryAudit.filter((r) => r.state === 'archive').length,
-  supporting: repositoryAudit.filter((r) => r.state === 'support').length,
-  generatedAt: operationalSnapshot.generatedAt,
-  healthy: repositoryAudit.filter((r) => r.runtimeState === 'healthy' || r.runtimeState === 'static').length,
-  needsAttention: repositoryAudit.filter((r) => ['partial', 'degraded', 'unhealthy', 'unverified'].includes(r.runtimeState) && r.state === 'active').length,
-};
+export const repositoryAudit = buildRepositoryAudit(operationalSnapshot);
+export const repositoryAuditSummary = buildRepositoryAuditSummary(repositoryAudit, operationalSnapshot.generatedAt);

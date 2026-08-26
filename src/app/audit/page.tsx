@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { repositoryAudit, repositoryAuditSummary, type RepoPortfolioState } from '@/data/repository-audit';
+import { useMemo } from 'react';
+import { buildRepositoryAudit, buildRepositoryAuditSummary, type RepoPortfolioState } from '@/data/repository-audit';
 import { useLocale } from '@/lib/locale-context';
+import { useOperationalSnapshot } from '@/lib/operational-context';
 
 const stateStyle: Record<RepoPortfolioState, string> = {
   active: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
@@ -43,6 +45,12 @@ function displayTimestamp(value: string | null) {
 export default function AuditPage() {
   const { locale } = useLocale();
   const ar = locale === 'ar';
+  const { snapshot, loading, error, source } = useOperationalSnapshot();
+  const repositoryAudit = useMemo(() => buildRepositoryAudit(snapshot), [snapshot]);
+  const repositoryAuditSummary = useMemo(
+    () => buildRepositoryAuditSummary(repositoryAudit, snapshot.generatedAt),
+    [repositoryAudit, snapshot.generatedAt],
+  );
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 space-y-6">
@@ -53,18 +61,25 @@ export default function AuditPage() {
               {ar ? 'تدقيق حي للمحفظة والمستودعات' : 'LIVE PORTFOLIO & REPOSITORY AUDIT'}
             </p>
             <h1 className="mt-2 text-2xl font-bold text-[var(--color-text-primary)]">
-              {ar ? 'GitHub + README + Architecture + Health + CI' : 'GitHub + README + Architecture + Health + CI'}
+              GitHub + README + Architecture + Health + CI
             </h1>
             <p className="mt-2 max-w-3xl text-sm text-[var(--color-text-secondary)]">
               {ar
-                ? 'الحالة التشغيلية هنا مولدة آليًا من المستودع الحقيقي وملف .jaber-dashboard.json ونقاط الـHealth المعلنة. لا يتم اعتبار التطبيق جاهزًا لمجرد أن الصفحة تفتح.'
-                : 'Operational status is generated from the canonical repository, .jaber-dashboard.json, declared live health endpoints and CI. A page loading is never treated as proof that the product is ready.'}
+                ? 'الحالة التشغيلية مولدة من المستودع الحقيقي وملف .jaber-dashboard.json ونقاط الـHealth المعلنة. لا يتم اعتبار التطبيق جاهزًا لمجرد أن الصفحة تفتح.'
+                : 'Operational status comes from the canonical repository, .jaber-dashboard.json and declared health evidence. A page loading is never treated as proof that the product is ready.'}
             </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px]">
+              <span className={`rounded-md border px-2 py-1 font-bold ${source === 'live' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' : 'border-amber-500/30 bg-amber-500/10 text-amber-400'}`}>
+                {source === 'live' ? (ar ? 'LIVE SYNC' : 'LIVE SYNC') : (ar ? 'STATIC FALLBACK' : 'STATIC FALLBACK')}
+              </span>
+              {loading && <span className="text-[var(--color-text-tertiary)]">{ar ? 'يتم تحديث الحالة…' : 'Refreshing operational state…'}</span>}
+              {error && <span className="text-amber-400" title={error}>{ar ? 'تعذر التحديث الحي؛ تم استخدام آخر snapshot.' : 'Live refresh failed; using last snapshot.'}</span>}
+            </div>
           </div>
           <div className="rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] px-4 py-3 text-sm min-w-[230px]">
             <div className="text-[10px] uppercase tracking-wide text-[var(--color-text-tertiary)]">{ar ? 'آخر مزامنة تشغيلية' : 'Last operational sync'}</div>
             <div className="mt-1 font-semibold text-[var(--color-text-primary)]">{displayTimestamp(repositoryAuditSummary.generatedAt)}</div>
-            <div className="mt-1 text-[10px] text-[var(--color-text-tertiary)]">{ar ? 'دوريًا كل 6 ساعات + تشغيل يدوي' : 'Every 6 hours + manual run'}</div>
+            <div className="mt-1 text-[10px] text-[var(--color-text-tertiary)]">{ar ? 'Server cache: 6 ساعات' : 'Server cache: 6 hours'}</div>
           </div>
         </div>
       </section>
@@ -84,7 +99,7 @@ export default function AuditPage() {
             {ar ? `سجل المستودعات — ${repositoryAuditSummary.totalRepos}` : `Repository registry — ${repositoryAuditSummary.totalRepos}`}
           </h2>
           <p className="mt-1 text-xs text-[var(--color-text-tertiary)]">
-            {ar ? 'README وArchitecture وCI والـHealth كلها من المصدر المولد، وليست نصوصًا ثابتة.' : 'README, architecture, CI and runtime health are generated source-of-truth fields, not hardcoded audit text.'}
+            {ar ? 'README وArchitecture وCI والـHealth كلها من المصدر التشغيلي وليست نصوصًا ثابتة.' : 'README, architecture, CI and runtime health come from the operational source, not hardcoded audit text.'}
           </p>
         </div>
 
@@ -170,8 +185,8 @@ export default function AuditPage() {
         <h2 className="text-sm font-semibold text-[var(--color-text-primary)]">{ar ? 'قاعدة المصدر الحقيقي' : 'Source-of-truth rule'}</h2>
         <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
           {ar
-            ? 'حالة المنتج التقنية لا تؤخذ من scores التجارية أو من نص قديم داخل Dashboard. GitHub main والـmanifest والوثائق وCI والـHealth هي المصدر التشغيلي. معلومات السوق والتسعير تبقى منفصلة لأنها تحتاج بحثًا أو تحققًا تجاريًا.'
-            : 'Technical readiness never comes from commercial scores or stale dashboard prose. GitHub main, the manifest, documentation, CI and live health are the operational source. Market and pricing information remain separate because they require research or customer validation.'}
+            ? 'حالة المنتج التقنية لا تؤخذ من scores التجارية أو من نص قديم داخل Dashboard. GitHub main والـmanifest والوثائق والـHealth هي المصدر التشغيلي. GitHub Action يبقى قناة إضافية لحفظ snapshot عندما تكون Actions مفعلة.'
+            : 'Technical readiness never comes from commercial scores or stale dashboard prose. GitHub main, the manifest, documentation and live health are the operational source. GitHub Actions remains a secondary snapshot-persistence channel when Actions is available.'}
         </p>
       </section>
     </div>
