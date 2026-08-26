@@ -1,6 +1,11 @@
 {
   "schemaVersion": 1,
   "owner": "majaber1",
+  "syncPolicy": {
+    "schedule": "17 */6 * * *",
+    "runtimeSource": "manifest-declared health or CI-only contract",
+    "missingEvidence": "UNVERIFIED"
+  },
   "projects": [
     {"repo":"majaber1/qarar-ai-v10","product":"Qarar AI","productSlug":"qarar-ai","classification":"Active product","state":"active","action":"Use live deployment health and complete one durable production decision journey."},
     {"repo":"majaber1/saudi-business","product":"Saudi Business","productSlug":"saudi-business","classification":"Active product","state":"active","action":"Use deployment health, then validate a fresh-account feasibility-to-export journey."},
