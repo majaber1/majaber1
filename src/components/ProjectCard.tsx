@@ -5,6 +5,7 @@ import type { Project } from '@/types/project';
 import { getStatusColor, cn, countByStatus } from '@/lib/utils';
 import { getPriorityRecommendation } from '@/lib/priority';
 import { useLocale } from '@/lib/locale-context';
+import { storageVerification } from '@/data/storage-verification';
 import ScoreRing from './ScoreRing';
 import LifecycleTracker from './LifecycleTracker';
 
@@ -19,6 +20,12 @@ const recColors: Record<string, string> = {
   'PAUSE': 'bg-[var(--color-text-tertiary)]/15 text-[var(--color-text-tertiary)] border-[var(--color-text-tertiary)]/30',
 };
 
+const storageColors = {
+  configured: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  not_configured: 'border-red-500/30 bg-red-500/10 text-red-400',
+  unverified: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
   const { locale } = useLocale();
   const ar = locale === 'ar';
@@ -28,6 +35,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const resolved = countByStatus(project.tasks, 'resolved');
   const liveUrl = project.vercel?.productionUrl;
   const githubUrl = project.github?.repo ? `https://github.com/${project.github.repo}` : undefined;
+  const storage = storageVerification[project.slug];
 
   return (
     <div className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-5 transition-all hover:border-[var(--color-border-accent)] hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5">
@@ -63,6 +71,24 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="mt-2 text-xs text-[var(--color-text-tertiary)] min-h-10">
         <span className="text-[var(--color-text-secondary)]">{ar ? 'التالي:' : 'Next:'}</span> {project.nextAction}
       </div>
+
+      {storage && (
+        <div className="mt-3 rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-tertiary)]/40 p-2.5" title={storage.evidence}>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-[var(--color-text-tertiary)]">
+              {ar ? 'التخزين' : 'Storage'}
+            </span>
+            <span className={cn('inline-flex rounded-md border px-2 py-0.5 text-[10px] font-bold', storageColors[storage.state])}>
+              {storage.state === 'configured'
+                ? (ar ? 'R2 مفعّل' : 'R2 CONFIGURED')
+                : storage.state === 'not_configured'
+                  ? (ar ? 'R2 غير مربوط' : 'R2 NOT CONFIGURED')
+                  : (ar ? 'غير متحقق' : 'UNVERIFIED')}
+            </span>
+            <span className="text-[10px] text-[var(--color-text-tertiary)]">{storage.provider}</span>
+          </div>
+        </div>
+      )}
 
       <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--color-border-primary)] pt-3">
         <Link
