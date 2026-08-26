@@ -56,13 +56,25 @@ const slugAliases: Record<string, string> = {
   playmotion: 'playmotion-events',
 };
 
+export function canonicalOperationalSlug(slug: string) {
+  return slugAliases[slug] ?? slug;
+}
+
+export function findOperationalProject(snapshot: OperationalSnapshot, slug: string): OperationalProject | undefined {
+  const canonical = canonicalOperationalSlug(slug);
+  return snapshot.projects.find((p) => p.productSlug === canonical);
+}
+
+export function findOperationalByRepo(snapshot: OperationalSnapshot, repo: string): OperationalProject | undefined {
+  return snapshot.projects.find((p) => p.repo === repo);
+}
+
 export function getOperationalProject(slug: string): OperationalProject | undefined {
-  const canonical = slugAliases[slug] ?? slug;
-  return operationalSnapshot.projects.find((p) => p.productSlug === canonical);
+  return findOperationalProject(operationalSnapshot, slug);
 }
 
 export function getOperationalByRepo(repo: string): OperationalProject | undefined {
-  return operationalSnapshot.projects.find((p) => p.repo === repo);
+  return findOperationalByRepo(operationalSnapshot, repo);
 }
 
 export function runtimeLabel(state: RuntimeState): string {
