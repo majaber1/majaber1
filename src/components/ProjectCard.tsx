@@ -5,7 +5,8 @@ import type { Project } from '@/types/project';
 import { getStatusColor, cn, countByStatus } from '@/lib/utils';
 import { getPriorityRecommendation } from '@/lib/priority';
 import { useLocale } from '@/lib/locale-context';
-import { getOperationalProject, runtimeLabel } from '@/data/operational';
+import { useOperationalProject } from '@/lib/operational-context';
+import { runtimeLabel } from '@/data/operational';
 import ScoreRing from './ScoreRing';
 import LifecycleTracker from './LifecycleTracker';
 
@@ -44,7 +45,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const blockers = countByStatus(project.tasks, 'blocker');
   const pending = countByStatus(project.tasks, 'pending');
   const resolved = countByStatus(project.tasks, 'resolved');
-  const operational = getOperationalProject(project.slug);
+  const operational = useOperationalProject(project.slug);
   const liveUrl = operational?.productionUrl || project.vercel?.productionUrl;
   const githubUrl = operational?.github.htmlUrl || (project.github?.repo ? `https://github.com/${project.github.repo}` : undefined);
   const storage = operational?.storage;
