@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T09:49:36.163Z",
+  "generatedAt": "2026-08-27T22:16:20.672Z",
   "generator": "scripts/sync-portfolio.mjs",
   "sourcePolicy": {
     "code": "GitHub canonical branch",
@@ -22,18 +22,18 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "d6b52a19b98de714d499dddb144b7aabb646ca7c",
-        "headMessage": "Fix Qarar health contract and refresh source of truth",
-        "headCommittedAt": "2026-08-26T16:21:17Z",
-        "repoUpdatedAt": "2026-08-26T16:22:02Z",
-        "repoPushedAt": "2026-08-26T16:21:17Z",
+        "headSha": "a4811cf8f6b93fd75d51eb221088ac20d162f45d",
+        "headMessage": "fix-backend-health-compatibility-route",
+        "headCommittedAt": "2026-08-27T20:50:24Z",
+        "repoUpdatedAt": "2026-08-27T20:46:43Z",
+        "repoPushedAt": "2026-08-27T20:46:23Z",
         "htmlUrl": "https://github.com/majaber1/qarar-ai-v10",
         "ci": {
           "state": "passing",
           "conclusion": "success",
           "workflow": "Qarar CI",
-          "updatedAt": "2026-08-26T16:43:53Z",
-          "url": "https://github.com/majaber1/qarar-ai-v10/actions/runs/32989925820"
+          "updatedAt": "2026-08-27T20:47:57Z",
+          "url": "https://github.com/majaber1/qarar-ai-v10/actions/runs/33114952474"
         }
       },
       "manifest": {
@@ -46,7 +46,7 @@
         "readme": {
           "state": "present",
           "path": "README.md",
-          "lastCommitAt": "2026-08-26T16:21:17Z",
+          "lastCommitAt": "2026-08-27T20:38:25Z",
           "stale": false
         },
         "architecture": {
@@ -59,14 +59,10 @@
       "health": [
         {
           "url": "https://qarar-ai-v10.vercel.app/api/deployment-health",
-          "ok": true,
-          "httpStatus": 200,
-          "latencyMs": 5383,
-          "body": {
-            "status": "ready",
-            "frontend": "ready",
-            "backend": "ready"
-          },
+          "ok": false,
+          "httpStatus": 401,
+          "latencyMs": 189,
+          "body": {},
           "error": null
         }
       ],
@@ -76,10 +72,10 @@
         "evidence": "no safe storage signal returned by health"
       },
       "runtime": {
-        "state": "healthy",
-        "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
+        "state": "degraded",
+        "summary": "At least one declared health endpoint is failing (401)."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/saudi-business",
@@ -94,18 +90,18 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "fe674172611450e3ce48303ba318b8d20573b13d",
-        "headMessage": "Align Saudi Business health, storage and architecture",
-        "headCommittedAt": "2026-08-26T16:23:27Z",
-        "repoUpdatedAt": "2026-08-26T16:25:03Z",
-        "repoPushedAt": "2026-08-26T16:23:27Z",
+        "headSha": "4f00dc2d28704903d232d0d4fbfe1d767203db49",
+        "headMessage": "Premium Saudi Business decision-workspace UX",
+        "headCommittedAt": "2026-08-27T19:27:48Z",
+        "repoUpdatedAt": "2026-08-27T19:32:01Z",
+        "repoPushedAt": "2026-08-27T19:27:48Z",
         "htmlUrl": "https://github.com/majaber1/saudi-business",
         "ci": {
-          "state": "failing",
-          "conclusion": "failure",
+          "state": "passing",
+          "conclusion": "success",
           "workflow": "CI",
-          "updatedAt": "2026-08-26T16:41:05Z",
-          "url": "https://github.com/majaber1/saudi-business/actions/runs/32989700704"
+          "updatedAt": "2026-08-27T19:30:29Z",
+          "url": "https://github.com/majaber1/saudi-business/actions/runs/33108554217"
         }
       },
       "manifest": {
@@ -133,7 +129,7 @@
           "url": "https://saudi-business-web.vercel.app/api/deployment-health",
           "ok": false,
           "httpStatus": 404,
-          "latencyMs": 292,
+          "latencyMs": 126,
           "body": "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\" class=\"inter_5090b139-module__1h4HmG__variable tajawal_ecbdf2b3-module__jvXS4q__variable\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/0nit5axgw9fuu.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/immutable/chunks/25kvgcvbp6c14.js\"/><script src=\"/_next/static/immutable/chunks/28fkf9f9btak4.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/0u5o2n_fg8ytz.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/1_bkiiq4b4h8t.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/turbopack-3zoxssnfs5ejn.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/1mrc6wz568ov6.js\" async=\"\" crossorigin=\"\"></script><script src=\"/_next/static/immutable/chunks/3wzycrzb45h91.js\" async=\"\" crossorigin=\"\"></script><meta name=\"robots\" content=\"noindex\"/><",
           "error": null
         }
@@ -147,7 +143,7 @@
         "state": "degraded",
         "summary": "At least one declared health endpoint is failing (404)."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/linkedin-ai-autoposter",
@@ -172,8 +168,8 @@
           "state": "passing",
           "conclusion": "success",
           "workflow": "SignalPost Automation",
-          "updatedAt": "2026-08-27T06:32:17Z",
-          "url": "https://github.com/majaber1/linkedin-ai-autoposter/actions/runs/33046208760"
+          "updatedAt": "2026-08-27T17:53:39Z",
+          "url": "https://github.com/majaber1/linkedin-ai-autoposter/actions/runs/33100717820"
         }
       },
       "manifest": {
@@ -201,7 +197,7 @@
           "url": "https://linkedin-ai-autoposter-rouge.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 1873,
+          "latencyMs": 1993,
           "body": {
             "mode": "ai",
             "databaseReachable": true,
@@ -221,7 +217,7 @@
         "state": "healthy",
         "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/SponsorLoop",
@@ -236,11 +232,11 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "814728e3473088b02cc25fb4dad18178b1f9d235",
-        "headMessage": "Establish SponsorLoop operational source of truth",
-        "headCommittedAt": "2026-08-26T16:21:30Z",
-        "repoUpdatedAt": "2026-08-26T16:41:06Z",
-        "repoPushedAt": "2026-08-26T18:27:15Z",
+        "headSha": "2b4cfc33a7369ae1344da6d8edb8401227b70824",
+        "headMessage": "Restore SponsorLoop production smoke test",
+        "headCommittedAt": "2026-08-27T18:38:27Z",
+        "repoUpdatedAt": "2026-08-27T18:43:31Z",
+        "repoPushedAt": "2026-08-27T18:38:27Z",
         "htmlUrl": "https://github.com/majaber1/SponsorLoop",
         "ci": {
           "state": "unknown",
@@ -260,7 +256,7 @@
         "readme": {
           "state": "present",
           "path": "README.md",
-          "lastCommitAt": "2026-08-26T16:21:30Z",
+          "lastCommitAt": "2026-08-27T15:16:07Z",
           "stale": false
         },
         "architecture": {
@@ -275,7 +271,7 @@
           "url": "https://sponsorloop-gold.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 1114,
+          "latencyMs": 1178,
           "body": {
             "status": "ok",
             "version": "2.0.0",
@@ -296,7 +292,7 @@
         "state": "partial",
         "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/eada-platform",
@@ -311,18 +307,18 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "62490eba244fbfdfea73a0f6dc57dad19ffd4f3e",
-        "headMessage": "Refresh EADA runtime truth and health",
-        "headCommittedAt": "2026-08-26T16:22:33Z",
-        "repoUpdatedAt": "2026-08-26T16:23:03Z",
-        "repoPushedAt": "2026-08-26T18:26:39Z",
+        "headSha": "0060b95f4db84a6afba368decb9e3c27ae7503c6",
+        "headMessage": "Premium EADA enterprise operations experience",
+        "headCommittedAt": "2026-08-27T18:37:19Z",
+        "repoUpdatedAt": "2026-08-27T18:47:46Z",
+        "repoPushedAt": "2026-08-27T18:37:19Z",
         "htmlUrl": "https://github.com/majaber1/eada-platform",
         "ci": {
           "state": "passing",
           "conclusion": "success",
           "workflow": "Deploy static site to Pages",
-          "updatedAt": "2026-08-26T16:39:36Z",
-          "url": "https://github.com/majaber1/eada-platform/actions/runs/32989597516"
+          "updatedAt": "2026-08-27T18:37:39Z",
+          "url": "https://github.com/majaber1/eada-platform/actions/runs/33104395039"
         }
       },
       "manifest": {
@@ -350,7 +346,7 @@
           "url": "https://eada-platform.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 783,
+          "latencyMs": 767,
           "body": {
             "status": "ok",
             "database": true,
@@ -368,7 +364,7 @@
         "state": "partial",
         "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/scrap-ai",
@@ -383,18 +379,18 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "aa36b01ffac9f70827796718176f6c52cf1d06d4",
-        "headMessage": "Refresh Scrap AI runtime documentation",
-        "headCommittedAt": "2026-08-26T16:21:39Z",
-        "repoUpdatedAt": "2026-08-26T16:22:10Z",
-        "repoPushedAt": "2026-08-26T18:26:51Z",
+        "headSha": "273b1e49142a5e70ba3f65e2441a2528c2eaf57d",
+        "headMessage": "Simplify Scrap AI into a bright seller-buyer marketplace",
+        "headCommittedAt": "2026-08-27T19:57:52Z",
+        "repoUpdatedAt": "2026-08-27T19:59:27Z",
+        "repoPushedAt": "2026-08-27T19:57:53Z",
         "htmlUrl": "https://github.com/majaber1/scrap-ai",
         "ci": {
-          "state": "unknown",
-          "conclusion": null,
-          "workflow": null,
-          "updatedAt": null,
-          "url": null
+          "state": "passing",
+          "conclusion": "success",
+          "workflow": "Production Smoke",
+          "updatedAt": "2026-08-27T19:58:23Z",
+          "url": "https://github.com/majaber1/scrap-ai/actions/runs/33110993127"
         }
       },
       "manifest": {
@@ -407,7 +403,7 @@
         "readme": {
           "state": "present",
           "path": "README.md",
-          "lastCommitAt": "2026-08-26T16:21:39Z",
+          "lastCommitAt": "2026-08-27T19:57:52Z",
           "stale": false
         },
         "architecture": {
@@ -422,7 +418,7 @@
           "url": "https://scrap-ai.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 852,
+          "latencyMs": 587,
           "body": {
             "status": "ok",
             "database": true,
@@ -441,7 +437,7 @@
         "state": "partial",
         "summary": "Core health responds, but one or more AI/storage dependencies are not fully configured."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/multazim-ai-mvp",
@@ -495,7 +491,7 @@
           "url": "https://multazim-ai-mvp.vercel.app/api/health",
           "ok": false,
           "httpStatus": 503,
-          "latencyMs": 936,
+          "latencyMs": 894,
           "body": {
             "status": "degraded"
           },
@@ -511,7 +507,7 @@
         "state": "degraded",
         "summary": "At least one declared health endpoint is failing (503)."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/saudi-source",
@@ -526,11 +522,11 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "0b57ac6690dbae250168873b7ae4d33a42e1b79d",
-        "headMessage": "Refresh Saudi Source operational source of truth",
-        "headCommittedAt": "2026-08-26T16:22:41Z",
-        "repoUpdatedAt": "2026-08-26T16:23:24Z",
-        "repoPushedAt": "2026-08-26T18:27:04Z",
+        "headSha": "4970c826d61f84f7668c6f5b7911c1f4093d6355",
+        "headMessage": "Premium Saudi Source B2B export marketplace UX",
+        "headCommittedAt": "2026-08-27T18:37:11Z",
+        "repoUpdatedAt": "2026-08-27T18:47:55Z",
+        "repoPushedAt": "2026-08-27T18:37:12Z",
         "htmlUrl": "https://github.com/majaber1/saudi-source",
         "ci": {
           "state": "unknown",
@@ -565,7 +561,7 @@
           "url": "https://saudi-source.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 856,
+          "latencyMs": 698,
           "body": {
             "status": "ok",
             "database": true
@@ -582,7 +578,7 @@
         "state": "healthy",
         "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/MiniBites-AI-Studio",
@@ -636,7 +632,7 @@
           "url": "https://minibites-ai-studio.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 1005,
+          "latencyMs": 875,
           "body": {
             "status": "ready",
             "service": "kiswani-ai-studio",
@@ -654,7 +650,7 @@
         "state": "healthy",
         "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/private-coach-v4",
@@ -713,7 +709,7 @@
         "state": "unverified",
         "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/playmotion-events",
@@ -771,7 +767,7 @@
           "url": "https://playmotion-events.vercel.app/health.json",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 187,
+          "latencyMs": 49,
           "body": {
             "status": "ready",
             "service": "playmotion-events",
@@ -791,7 +787,7 @@
         "state": "static",
         "summary": "Static deployment health is good; manifest correctly marks backend/booking capabilities that are not connected."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/whatsapp-agent-saas",
@@ -850,7 +846,7 @@
         "state": "unverified",
         "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/cloudshift-ai",
@@ -909,7 +905,7 @@
         "state": "unverified",
         "summary": "No valid .jaber-dashboard.json on the canonical branch; runtime is not inferred."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/modpilot-ai",
@@ -973,7 +969,7 @@
         "state": "unverified",
         "summary": "CI/build health is unavailable; runtime readiness is not proven."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/saudi-school-finder",
@@ -1033,7 +1029,7 @@
           "url": "https://saudi-school-finder.vercel.app/api/health",
           "ok": false,
           "httpStatus": 404,
-          "latencyMs": 38,
+          "latencyMs": 65,
           "body": "<!DOCTYPE html><html lang=\"ar\" dir=\"rtl\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/516179c206b2c30e.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack-68f22649503f8e75.js\"/><script src=\"/_next/static/chunks/4bd1b696-43910567a2c03e2a.js\" async=\"\"></script><script src=\"/_next/static/chunks/684-dd92b1db18843ee1.js\" async=\"\"></script><script src=\"/_next/static/chunks/main-app-c9779a9cf3f89b5e.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><title>404: This page could not be found.</title><title>Saudi School Finder | دليل مدارس السعودية</title><meta name=\"description\" content=\"ابحث، قارن، واختر المدرسة الأنسب لطفلك في السعودية.\"/><script src=\"/_next/static/chunks/polyfills-42372ed130431b0a.js\" noModule=\"\"></script></head><body><div style=\"font-family:system-ui,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-seri",
           "error": null
         }
@@ -1047,7 +1043,7 @@
         "state": "degraded",
         "summary": "At least one declared health endpoint is failing (404)."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/MAJ-Consultant",
@@ -1106,7 +1102,7 @@
           "url": "https://majaber1.github.io/MAJ-Consultant/health.json",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 104,
+          "latencyMs": 132,
           "body": {
             "status": "ready",
             "service": "maj-consultant",
@@ -1125,7 +1121,7 @@
         "state": "static",
         "summary": "Static deployment health is healthy; no backend is claimed."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/majaber1",
@@ -1140,18 +1136,18 @@
         "archived": false,
         "visibility": "public",
         "defaultBranch": "main",
-        "headSha": "2a5b1988c93b55b08a30b90c7dc945c4238a33d7",
+        "headSha": "59d9cf890671ed95b3fdf49345fdd05e6917cf07",
         "headMessage": "chore: refresh operational portfolio snapshot",
-        "headCommittedAt": "2026-08-26T20:04:23Z",
-        "repoUpdatedAt": "2026-08-26T20:39:03Z",
-        "repoPushedAt": "2026-08-26T20:04:24Z",
+        "headCommittedAt": "2026-08-27T09:50:19Z",
+        "repoUpdatedAt": "2026-08-27T09:56:55Z",
+        "repoPushedAt": "2026-08-27T09:50:20Z",
         "htmlUrl": "https://github.com/majaber1/majaber1",
         "ci": {
           "state": "running",
           "conclusion": null,
           "workflow": "Portfolio Source of Truth Sync",
-          "updatedAt": "2026-08-27T09:49:29Z",
-          "url": "https://github.com/majaber1/majaber1/actions/runs/33060301128"
+          "updatedAt": "2026-08-27T22:16:13Z",
+          "url": "https://github.com/majaber1/majaber1/actions/runs/33121808870"
         }
       },
       "manifest": {
@@ -1183,7 +1179,7 @@
           "url": "https://jaber-dashboard-v2.vercel.app/api/health",
           "ok": true,
           "httpStatus": 200,
-          "latencyMs": 970,
+          "latencyMs": 1185,
           "body": {
             "status": "healthy",
             "service": "Jaber Dashboard",
@@ -1203,7 +1199,7 @@
         "state": "healthy",
         "summary": "Declared health endpoints are reachable and no critical dependency failure is reported."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/proposalpilot-ai",
@@ -1262,7 +1258,7 @@
         "state": "archived",
         "summary": "Archived / historical repository; excluded from active product KPIs."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/resume-check",
@@ -1321,7 +1317,7 @@
         "state": "archived",
         "summary": "Archived / historical repository; excluded from active product KPIs."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/iso27001-compliance-automation",
@@ -1380,7 +1376,7 @@
         "state": "archived",
         "summary": "Archived / historical repository; excluded from active product KPIs."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/multazim-ai",
@@ -1439,7 +1435,7 @@
         "state": "archived",
         "summary": "Archived / historical repository; excluded from active product KPIs."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     },
     {
       "repo": "majaber1/Private-Coach",
@@ -1498,7 +1494,7 @@
         "state": "archived",
         "summary": "Archived / historical repository; excluded from active product KPIs."
       },
-      "checkedAt": "2026-08-27T09:49:36.163Z"
+      "checkedAt": "2026-08-27T22:16:20.672Z"
     }
   ]
 }
