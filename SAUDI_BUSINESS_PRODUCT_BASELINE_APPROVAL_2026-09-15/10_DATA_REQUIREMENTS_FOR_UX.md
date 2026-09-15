@@ -16,6 +16,29 @@ Response:
   ai_summary: string (portfolio-level insight)
 ```
 
+## My Businesses (S04a)
+
+```
+GET /api/v2/businesses
+Response:
+  businesses: [{id, name, sector, location, status, health_score, latest_decision, evidence_coverage_pct, last_activity, study_count}]
+```
+
+## Business Home (S04b)
+
+```
+GET /api/v2/businesses/:bid
+Response:
+  profile: {name, sector, location, status, created_at}
+  health: {score, factors: [{name, status}]}
+  latest_baseline: {investment, revenue_base, break_even, decided_at}
+  studies: [{id, name, status, phase, decision, created_at}]
+  latest_decision: {outcome, decided_by, decided_at, conditions}
+  evidence_health: {coverage_pct, fresh_count, aging_count, stale_count, gap_count}
+  recent_activity: [{timestamp, type, description}]
+  recommended_action: {label, action_url, reason}
+```
+
 ## Workspace Overview (S07)
 
 ```

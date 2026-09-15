@@ -8,7 +8,7 @@
 ## Owner Decisions (D1-D10)
 
 ### D1: MVP Scope
-**Approved**: Option A — 18 MVP screens (feasibility workspace end-to-end + Command Center + Decision Inbox). No change to proposed scope.
+**Approved**: Option A with adjustment — MVP screens include feasibility workspace end-to-end + Command Center + Action Center + My Businesses + Business Home. Screen count is not an architecture constraint; it adjusts honestly to accommodate the Business Workspace model (see C3).
 
 ### D2: Domain Generalization Priority
 **Approved**: Option A — Before Phase 9. Clean architecture first; Coffee-specific code audit and refactoring completed before Phase 9 implementation begins.
@@ -19,17 +19,17 @@
 ### D4: Report Generation in MVP
 **Approved**: Option A — Basic PDF feasibility report export included in MVP.
 
-### D5: Decision Inbox Complexity
-**Approved**: Option B — Simple notification list. "You have N pending decisions" linking to workspace Decision tabs. Full inbox deferred to post-MVP.
+### D5: Action Center Complexity
+**Approved**: Option B — Simple notification list. "You have N pending decisions" linking to workspace Decision tabs. Full Action Center deferred to post-MVP.
 
 ### D6: Onboarding Flow
-**Approved**: Option A — Guided wizard (Profile → Goals → First Study).
+**Approved**: Option A (refined) — Adaptive guided wizard: Profile → Goals → Add Business (existing) or New Idea (venture). Existing businesses may skip feasibility; new ventures may start first evaluation.
 
 ### D7: Study Progress Representation
 **Approved**: Option A — Phase indicators only. "Research → Evidence → Financial Model → Decision" with current phase highlighted. No percentage.
 
 ### D8: Prototype Visual Direction
-**Approved**: Option A — Proceed with green Saudi theme, enterprise density, sidebar navigation. Approved visual direction.
+**Approved**: Option A (refined) — Premium enterprise decision intelligence with Saudi green as a controlled brand/accent color. Prototype references are directional, not literal implementation specs. See C12 for design refinement.
 
 ### D9: Module Phasing Order (Post-MVP)
 **Modified**: Phase 9A = Decision Simulator, Phase 9B = Funding Readiness, Phase 9C = Opportunity Radar, Phase 10 = Monitoring. Reporting is a basic export in Phase 9 (MVP), not a standalone phase.
@@ -103,6 +103,30 @@ Domain packs define: information needs, research priorities, financial model dep
 
 ### C10: Final Status Update
 After all corrections are applied consistently, final status changes to READY_FOR_OWNER_APPROVAL.
+
+### C11: Business Workspace Real in UX
+My Businesses (`/businesses`) and Business Home (`/businesses/:bid`) are distinct MVP screens, not theoretical placeholders. Business Home is a persistent, study-independent view showing business profile, health, studies, evidence, decisions, simulations, funding, monitoring, reports, and next actions. Screen count adjusts honestly to accommodate this — "18 screens" is not a constraint.
+
+### C12: Visual Direction Refinement
+The approved direction is Premium Enterprise Decision Intelligence with Saudi green as a controlled brand/accent color. Use strong neutral surfaces, sophisticated typography, high information clarity, limited strategic green, semantic colors for evidence/decisions, and strong AR/EN readability. Avoid excessive green backgrounds, green-on-green dashboards, generic government portal styling, or decorative cards with no decision value. Prototype references are directional, not literal implementation specs.
+
+### C13: Database Migration Status
+"No database migration is needed" is replaced with "Database/schema migration requirement is TO BE DETERMINED during P4/P5 Business Workspace model and API baseline verification." Policy: prefer reuse of existing models; do not invent a migration; if migration is required, document schema impact and alternatives; schema change requires architecture/owner approval.
+
+### C14: Pre-Phase-9 Genericization Gate Bounded
+P3 is a bounded validation gate, not a redesign sprint. After Coffee validation closes: (A) Audit generic core paths for Coffee leakage. (B) Run two lightweight STRUCTURAL smoke scenarios — Scrap/Recycling and SaaS — to prove Research → Evidence → Financial → Decision works across radically different archetypes. Refactor only generic-core leakage that blocks this proof. Non-blocking domain enhancements go to backlog.
+
+### C15: Future Module Navigation Policy
+During Phase 9, unimplemented modules (Simulator, Funding, Opportunity Radar, Monitoring) must be feature-flag hidden until enabled. No broken or dead routes. No "Coming Soon" placeholder pages unless explicitly approved.
+
+### C16: Token/AI Cost Guardrails (Complete)
+Added to Agent Model: reuse persisted outputs, cache normalized evidence, check freshness before re-research, skip already-satisfied information needs, materiality-based research depth, bounded gap-recovery cycles, stop when sufficiency criteria are met, orchestrator must not invoke every capability for every request, deterministic before LLM, avoid duplicate LLM synthesis, reuse previously approved baselines.
+
+### C17: New Business vs New Evaluation
+"New Business" creates a Business Workspace. "New Evaluation" creates a Study under an existing Business, or creates a provisional Business first if the idea is new. Existing businesses may skip feasibility entirely.
+
+### C18: Evidence Business/Study Scope
+Business evidence (`/businesses/:bid/evidence`) spans all studies. Study-scoped evidence is filtered to the active study. A study workspace must not display unrelated evidence from another study without indicating it is reusable Business-level evidence.
 
 ---
 

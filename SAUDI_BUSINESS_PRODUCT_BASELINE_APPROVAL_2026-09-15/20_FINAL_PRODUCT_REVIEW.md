@@ -16,7 +16,7 @@ The current implementation has proven the core value loop through the Coffee val
 
 **Key clarification**: The 7 specialist agents represent logical responsibilities, not mandatory separate LLM processes. Execution prefers deterministic engines where possible (Financial Modeling, Simulation, Monitoring thresholds), with LLM used only where rules are insufficient.
 
-No fundamental redesign is needed. No stack replacement is needed. No database migration is needed. The path to Phase 9 is: complete the pre-Phase 9 gate (owner approval, Coffee closure, domain audit, model confirmation, API baseline, clean start), then build the product experience.
+No fundamental redesign is needed. No stack replacement is needed. Database migration requirements are TBD (to be determined during Phase 9 implementation based on Business Workspace model confirmation). The path to Phase 9 is: complete the pre-Phase 9 gate (owner approval, Coffee closure, domain audit, model confirmation, API baseline, clean start), then build the product experience.
 
 ---
 
@@ -65,7 +65,7 @@ No fundamental redesign is needed. No stack replacement is needed. No database m
 | 05 | Module Input/Process/Output | I→P→O→Decision→Next for all 9 modules + evidence override governance |
 | 06 | AI Agent Model | 7 logical responsibilities + orchestrator with deterministic-first execution modes |
 | 07 | Product UX Architecture | Information architecture, navigation (refined), components, states, RTL |
-| 08 | Screen Inventory | 43 screens with business-workspace routes and phase assignments |
+| 08 | Screen Inventory | 45 screens (20 MVP) with business-workspace routes and phase assignments |
 | 09 | Screen Specifications | Detailed specs for all major screens (17-point spec per screen) |
 | 10 | Data Requirements for UX | API contract needs per screen with business-workspace-centric routes |
 | 11 | Reporting Experience | 10 report types, generation rules, structure, export formats |
@@ -121,7 +121,7 @@ Phase 10: Continuous Monitoring (4-6 weeks)
 |------|-----------|--------|------------|
 | Coffee logic leaked into generic code | Medium | High | Pre-Phase 9 audit (P3) |
 | Arabic/RTL retrofitting is expensive | Low (mitigated) | Medium | RTL-first architecture mandated from day one |
-| Scope creep during Phase 9 | Medium | Medium | Stick to 18 MVP screens; defer Simulator/Funding/Radar to 9A-C |
+| Scope creep during Phase 9 | Medium | Medium | Stick to 20 MVP screens; defer Simulator/Funding/Radar to 9A-C |
 | AI engine quality issues during real usage | Medium | High | End-to-end testing before UI work |
 | Business Workspace model increases initial complexity | Low | Low | Clean data model prevents rework in later phases |
 | Scoring weights (Funding/Radar) mislead users | Medium | Medium | Marked DRAFT/CONFIGURABLE/REQUIRES CALIBRATION |
@@ -130,7 +130,7 @@ Phase 10: Continuous Monitoring (4-6 weeks)
 
 ## Owner Corrections Applied
 
-All 10 owner corrections have been applied across the deliverables:
+All owner corrections (C1-C10 original + C11-C18 consistency patch) have been applied across the deliverables:
 
 | # | Correction | Files Modified |
 |---|-----------|---------------|
@@ -144,6 +144,14 @@ All 10 owner corrections have been applied across the deliverables:
 | C8 | Navigation refinement (Action Center, reordered) | 03, 07, 08, 10 |
 | C9 | Domain pack wording (remove "benchmark databases") | 02 |
 | C10 | Final status update | 20 (this file) |
+| C11 | Business Workspace real in UX: My Businesses + Business Home screens | 03, 08, 09, 10, 17, 20 |
+| C12 | Visual direction: green as controlled accent, not dominant theme | 16 |
+| C13 | Database migration → TBD | 20 |
+| C14 | Bounded genericization gate (Scrap/Recycling + SaaS smoke tests) | 17, 18 |
+| C15 | Feature-flag nav policy for unimplemented modules | 07, 17 |
+| C16 | Token/AI cost guardrails complete in agent model | 06 |
+| C17 | New Business vs New Evaluation separated; adaptive onboarding | 02, 03, 09, 17, 18 |
+| C18 | Evidence scope: Business-level vs Study-scoped clarified | 02, 03 |
 
 ---
 

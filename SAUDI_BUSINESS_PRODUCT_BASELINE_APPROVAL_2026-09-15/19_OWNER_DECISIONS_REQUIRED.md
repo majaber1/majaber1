@@ -8,9 +8,9 @@ See also: `00_OWNER_APPROVED_DECISIONS_AND_CORRECTIONS.md` for the authoritative
 
 ## Decision 1: MVP Scope Confirmation
 
-**Question**: Is the proposed MVP scope (18 screens, feasibility workspace end-to-end + Command Center + Action Center) the right scope for Phase 9?
+**Question**: Is the proposed MVP scope (feasibility workspace end-to-end + Command Center + Action Center + My Businesses + Business Home) the right scope for Phase 9?
 
-**Owner Decision**: **A) Approve as proposed.** No scope change.
+**Owner Decision**: **A) Approve with adjustment.** 20 MVP screens after adding My Businesses and Business Home. Screen count is not a constraint — it adjusts honestly to the Business Workspace model.
 
 ---
 
@@ -50,7 +50,7 @@ See also: `00_OWNER_APPROVED_DECISIONS_AND_CORRECTIONS.md` for the authoritative
 
 **Question**: What should the first-use onboarding experience be?
 
-**Owner Decision**: **A) Guided wizard.** Profile → Goals → First Study.
+**Owner Decision**: **A) Guided wizard (refined).** Adaptive: Profile → Goals → Add Business (Existing Business OR New Venture).
 
 ---
 

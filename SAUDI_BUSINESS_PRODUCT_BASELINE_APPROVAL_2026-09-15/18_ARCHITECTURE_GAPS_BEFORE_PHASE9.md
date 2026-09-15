@@ -10,7 +10,7 @@ The pre-Phase 9 gate is limited to gatekeeping conditions, NOT implementation wo
 |---|------------|-------------|--------|
 | P1 | **Owner approval** | This product review package approved by owner | Owner action |
 | P2 | **Coffee closure decision** | Owner decides: continue Coffee validation independently, archive it, or merge applicable work | Owner decision |
-| P3 | **Domain generalization audit** | Verify no Coffee-specific hardcoding in core architecture. Audit: information needs templates, research queries, financial model formulas, evidence classification logic, UI labels | 1-2 weeks |
+| P3 | **Domain generalization audit** | Verify no Coffee-specific hardcoding in core architecture. Audit: information needs templates, research queries, financial model formulas, evidence classification logic, UI labels. **Bounded gate**: must pass two structural smoke scenarios (Scrap/Recycling + SaaS) — confirm that information needs, financial model structure, and research prompts produce valid (not Coffee-shaped) output for these non-F&B domains. This is a structural test, not a quality bar. | Bounded (see Smoke Test details below) |
 | P4 | **Business Workspace model confirmation** | Confirm first-class Business Workspace data model (User/Org → Business → Studies/Evidence/Models/Decisions) before implementation begins | Small (design confirmation) |
 | P5 | **API baseline confirmation** | Verify backend can serve workspace data through existing or minimally modified endpoints | Small (verification) |
 | P6 | **Clean starting point** | Branch strategy documented, dependencies current, environment variables documented (in .env.example, not .env) | Small |
@@ -47,12 +47,32 @@ The following items were previously listed as pre-Phase 9 gaps (G3-G8, G10). The
 | I8 | **Business Workspace data model** | Implement first-class Business Workspace entity (User/Org → Business → Studies/Evidence/etc.) |
 | I9 | **Evidence override governance** | Versioned, auditable overrides with no silent reclassification |
 | I10 | **Basic PDF report export** | Feasibility report export |
-| I11 | **Onboarding wizard** | Guided wizard: Profile → Goals → First Study |
+| I11 | **Onboarding wizard** | Adaptive wizard: Profile → Goals → Add Business (Existing Business OR New Venture) |
 | I12 | **Action Center** | Simple notification list linking to workspace decision tabs |
 
 ---
 
-## Domain Generalization Audit Details (P3)
+## Domain Generalization Audit Details (P3) — Bounded Gate
+
+### Structural Smoke Scenarios
+
+The domain audit is bounded by two structural smoke tests. These are NOT full feasibility studies — they are structural checks that the generic architecture produces valid output for non-F&B domains:
+
+**Scenario A: Scrap Metal / Recycling Business in Dammam**
+- Verify: information needs template generates relevant categories (not F&B categories)
+- Verify: financial model structure accepts non-F&B inputs (no "seating", "menu", "covers")
+- Verify: research prompts do not assume restaurant/cafe context
+
+**Scenario B: SaaS / Software Product**
+- Verify: information needs template generates relevant categories (not physical-location-dependent)
+- Verify: financial model structure handles subscription revenue (not transaction × ticket)
+- Verify: research prompts do not assume physical storefront
+
+**Pass criteria**: Both scenarios produce structurally valid (non-Coffee-shaped) information needs, financial model parameters, and research prompts. Quality and depth of output are NOT evaluated — only structural validity.
+
+**Fail action**: Any Coffee-specific logic found in generic code must be refactored into the domain pack pattern before Phase 9 implementation proceeds.
+
+### Code Audit Targets
 
 **CODE_FACT_REQUIRED**: Audit these files for Coffee/F&B-specific logic in generic code:
 - `ai_engine/config.py` — research prompts
@@ -83,7 +103,7 @@ Any Coffee-specific logic found must be refactored into the domain pack pattern 
 - [ ] U1: Frontend-backend connectivity verified (non-blocking)
 - [ ] U2: Seed data upsert verified (non-blocking)
 
-**Estimated effort for gate requirements (P1-P6)**: 1-2 weeks (dominated by P3 audit).
+**Estimated effort for gate requirements (P1-P6)**: Bounded by P3 audit (two structural smoke scenarios, not open-ended).
 **Phase 9 implementation (I1-I12)**: 4-6 weeks.
 
 ---

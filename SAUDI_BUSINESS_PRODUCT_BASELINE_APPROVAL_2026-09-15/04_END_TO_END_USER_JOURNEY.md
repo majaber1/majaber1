@@ -74,7 +74,7 @@ IDEA → PROFILE → PLAN → RESEARCH → EVIDENCE → GAPS → MODEL → DECIS
 **Where**: Workspace → Decision tab
 **User does**: Reviews AI recommendation and supporting evidence
 **System does**: Decision Advisor agent applies decision tree: sufficient evidence? → financially viable? → risks acceptable? → GO / GO_WITH_CONDITIONS / DEFER / NO_GO
-**Output**: Recommendation with full reasoning chain, conditions, confidence
+**Output**: Recommendation with structured decision rationale, conditions, confidence
 **Decision**: **OWNER APPROVAL GATE** — user selects: Accept / Override / Request More Research
 **Failure**: Conflicting signals → GO_WITH_CONDITIONS or DEFER with explicit conditions
 

@@ -11,6 +11,9 @@
 | **Business Command Center** |
 | S04 | Command Center (Home) | `/` | Command Center | Yes | P0 | 9 |
 | S05 | Action Center | `/actions` | Command Center | Yes | P1 | 9 |
+| **Business Portfolio** |
+| S04a | My Businesses | `/businesses` | Business Portfolio | Yes | P0 | 9 |
+| S04b | Business Home | `/businesses/:bid` | Business Portfolio | Yes | P0 | 9 |
 | **Business Workspace & Feasibility** |
 | S06 | Business/Study Creation Wizard | `/businesses/new` | Feasibility | Yes | P0 | 9 |
 | S07 | Workspace — Overview | `/businesses/:bid/studies/:id` | Feasibility | Yes | P0 | 9 |
@@ -64,6 +67,7 @@
 |----------|-------------|-----|----------|--------|
 | Auth & Onboarding | 3 | 3 | 0 | 0 |
 | Command Center | 2 | 2 | 0 | 0 |
+| Business Portfolio | 2 | 2 | 0 | 0 |
 | Feasibility Workspace | 12 | 11 | 1 | 0 |
 | Evidence Intelligence | 2 | 0 | 2 | 0 |
 | Funding Readiness | 5 | 0 | 5 | 0 |
@@ -72,4 +76,4 @@
 | Monitoring | 4 | 0 | 0 | 4 |
 | Reports & Knowledge | 4 | 0 | 3 | 1 |
 | Settings | 4 | 2 | 1 | 1 |
-| **Total** | **43** | **18** | **19** | **6** |
+| **Total** | **45** | **20** | **19** | **6** |

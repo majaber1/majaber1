@@ -130,7 +130,7 @@ Opportunity relevance considers:
 - **Filters**: Signal type, sector, location, score range, date
 - **Refresh**: Manual + automatic (background)
 - **History**: Past opportunities with outcome tracking (did user act? what happened?)
-- **Notification**: High-score opportunities trigger Decision Inbox notification
+- **Notification**: High-score opportunities trigger Action Center notification
 
 ## Empty State
 

@@ -17,7 +17,7 @@ These items must be completed before Phase 9 implementation begins. They are NOT
 |---|-------------|-------------|--------|
 | P1 | Owner approval of product review | This review package approved | Owner action |
 | P2 | Coffee validation closure decision | Continue, archive, or merge Coffee work | Owner decision |
-| P3 | Domain generalization audit | Audit information needs, research prompts, financial formulas, UI labels for Coffee-specific leakage | 1-2 weeks |
+| P3 | Domain generalization audit | Audit information needs, research prompts, financial formulas, UI labels for Coffee-specific leakage. **Bounded gate**: must pass two structural smoke scenarios (Scrap/Recycling + SaaS) — confirm that information needs, financial model structure, and research prompts produce valid (not Coffee-shaped) output for these non-F&B domains. This is a structural test, not a quality bar. | Bounded (see P3 details) |
 | P4 | Business-vs-Study object model confirmation | Confirm first-class Business Workspace data model in architecture | Small (design confirmation) |
 | P5 | API baseline confirmation | Backend can serve workspace data through existing endpoints | Small (verification) |
 | P6 | Clean starting point | Branch, dependencies, environment documented and ready | Small |
@@ -51,16 +51,18 @@ The following are Phase 9 implementation work (not prerequisites):
 - Financial model display with evidence traceability
 - Arabic/English RTL-first bilingual support
 - Phase-based progress indicators (not percentages)
-- Onboarding wizard (Profile → Goals → First Study)
+- Onboarding wizard (adaptive: Profile → Goals → Add Business: Existing Business OR New Venture)
 - Basic PDF feasibility report export
 
-### MVP Screens (18 screens)
+### MVP Screens (20 screens)
 
 | Screen | Priority | Justification |
 |--------|----------|---------------|
 | Login / Register | P0 | Access control |
-| Onboarding Wizard | P0 | First-use experience |
+| Onboarding Wizard | P0 | First-use experience (adaptive: Existing Business OR New Venture) |
 | Business Command Center (Home) | P0 | Portfolio entry point |
+| My Businesses | P0 | Business portfolio list |
+| Business Home | P0 | Persistent, study-independent business workspace |
 | Action Center | P1 | Pending actions (simplified notification list) |
 | Business/Study Creation Wizard | P0 | Business Workspace + study initiation |
 | Workspace Overview | P0 | Executive summary |
@@ -93,6 +95,8 @@ The following are Phase 9 implementation work (not prerequisites):
 | Arabic/English UI | New | Full RTL-first support + language toggle |
 
 ### MVP NOT Included (Deferred)
+
+**Feature-flag navigation policy**: During Phase 9, unimplemented modules (Simulator, Funding, Opportunity Radar, Monitoring) must be feature-flag hidden until enabled. No broken or dead routes. Sidebar items for unimplemented modules are not rendered until the module is available.
 
 | Feature | Reason for Deferral | Phase |
 |---------|-------------------|-------|

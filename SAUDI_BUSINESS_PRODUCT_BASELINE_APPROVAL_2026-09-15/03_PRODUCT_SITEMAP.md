@@ -33,15 +33,38 @@ Saudi Business
 
 ### 1. Business Command Center (`/`)
 - Portfolio overview
-- Active studies summary cards
-- Decision inbox (pending actions count)
+- Active Business Workspace summary cards
+- Action Center strip (pending actions count)
 - Risk alerts
 - Opportunity highlights
 - Funding readiness summary
 - Recent simulations
 - AI insights feed
 
-### 2. AI Feasibility Workspace (`/businesses/:bid/studies/:id`)
+### 1a. My Businesses (`/businesses`)
+- List/grid of all Business Workspaces
+- Per-business: name, sector, status, health, latest decision, evidence coverage
+- Quick actions: open workspace, new evaluation
+- Sort/filter by status, sector, last activity
+
+### 1b. Business Home (`/businesses/:bid`)
+```
+Business Workspace Home (persistent, study-independent)
+├── Business Profile (name, sector, location, status)
+├── Health & Status Summary
+├── Latest Approved Baseline (key financials)
+├── Studies / Evaluations (list of all studies for this business)
+├── Latest Decision (outcome, date, conditions)
+├── Evidence Health (coverage, freshness, gaps)
+├── Simulations (recent scenarios, saved)
+├── Funding Status (readiness, gap, programs)
+├── Monitoring Status (actual vs plan, alerts)
+├── Reports (generated, available)
+├── Recent Activity Timeline
+└── Recommended Next Action (AI-suggested)
+```
+
+### 2. AI Feasibility Workspace (`/businesses/:bid/studies/:sid`)
 ```
 Study Workspace
 ├── Overview (executive summary)
@@ -91,8 +114,9 @@ Study Workspace
 ### 3. Evidence Intelligence Center (`/businesses/:bid/evidence` + `/evidence`)
 ```
 Evidence Center
-├── Study-scoped evidence register
-├── Global evidence library
+├── Business-level evidence register (/businesses/:bid/evidence — all evidence across studies)
+├── Study-scoped view (filtered to active study, with indication of reusable Business evidence)
+├── Global evidence library (/evidence — cross-business, Phase 9+)
 ├── Evidence detail view
 │   ├── Value/range
 │   ├── Classification badge
@@ -247,9 +271,12 @@ Action Center
 ```
 Auth
 ├── Login / Register
-├── Onboarding
-│   ├── Business profile setup
+├── Onboarding (adaptive wizard)
+│   ├── Profile setup
 │   ├── Goals & constraints
-│   └── First study creation wizard
-└── Organization setup (multi-user)
+│   ├── Add Business: Existing Business OR New Idea/Venture
+│   │   ├── Existing Business → Business Workspace (may skip feasibility)
+│   │   └── New Venture → Business Workspace + optional first Evaluation
+│   └── Dashboard introduction
+└── Organization setup (multi-user, future)
 ```

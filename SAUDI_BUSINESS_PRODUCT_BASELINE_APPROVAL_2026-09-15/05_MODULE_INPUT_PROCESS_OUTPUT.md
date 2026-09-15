@@ -6,7 +6,7 @@
 
 **AI / SYSTEM PROCESSING**:
 - Aggregate portfolio health scores
-- Surface pending decisions (Decision Inbox)
+- Surface pending decisions (Action Center)
 - Rank risks by severity across businesses
 - Identify top opportunities from Radar
 - Compute funding readiness per business
@@ -221,7 +221,7 @@
 
 ---
 
-## Module 9: Decision Inbox
+## Module 9: Action Center
 
 **INPUT**: All pending actions across modules: study approvals, evidence reviews, gap resolutions, simulation results, monitoring alerts, funding actions
 

@@ -125,7 +125,7 @@ Compiled from workspace data:
 
 When gaps are identified:
 1. System flags the gap (e.g., "Lease agreement needed for bank application")
-2. Gap appears in Decision Inbox
+2. Gap appears in Action Center
 3. User can: Upload document / Mark N/A with reason / Request AI help (e.g., generate financial projection)
 4. Readiness score updates in real-time as gaps are filled
 

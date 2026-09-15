@@ -20,7 +20,7 @@ All user's studies, decisions, evidence, monitoring data, opportunities, alerts
 
 ### 5. Primary information hierarchy
 1. **Hero section**: Welcome + "What's changed since you were last here" AI summary (1-2 sentences)
-2. **Decision Inbox strip**: "[N] decisions need your attention" — clickable
+2. **Action Center strip**: "[N] decisions need your attention" — clickable
 3. **Active Studies grid**: Cards showing each study with status, key metric, evidence coverage
 4. **Risk Alerts**: Top 3 risks across portfolio with severity
 5. **Opportunities**: Top 3 matched opportunities with relevance score
@@ -29,13 +29,13 @@ All user's studies, decisions, evidence, monitoring data, opportunities, alerts
 
 ### 6. Components
 - AI Insight Banner (dismissible, context-aware)
-- Decision Inbox Strip (count + top items)
+- Action Center Strip (count + top items)
 - Study Cards (grid, sortable)
 - Risk Alert Cards
 - Opportunity Preview Cards
 - Funding Status Indicators
 - Activity Timeline
-- Quick Actions: "+ New Study", "View All Opportunities"
+- Quick Actions: "+ New Business", "+ New Evaluation", "View All Opportunities"
 
 ### 7. Evidence/provenance visibility
 Study cards show evidence coverage bar (% of information needs satisfied). Risk alerts link to underlying evidence.
@@ -46,18 +46,18 @@ Top banner: natural language summary of portfolio state. Each study card: one-li
 ### 9. User actions
 - Create new study
 - Continue existing study
-- Act on decision inbox item
+- Act on Action Center item
 - Explore opportunity
 - Navigate to any module
 
 ### 10. Decision action
-Navigate to Decision Inbox for pending approvals
+Navigate to Action Center for pending approvals
 
 ### 11. Next step
 Enter specific workspace or act on highest-priority item
 
 ### 12. Empty state
-First-time user: "Welcome to Saudi Business. Start your first business study to explore an opportunity." + prominent "New Study" CTA + brief visual explanation of the platform flow.
+First-time user: "Welcome to Saudi Business. Create your first Business Workspace to explore an opportunity." + prominent "New Business" CTA + brief visual explanation of the platform flow.
 
 ### 13. Loading state
 Skeleton cards for studies grid; "Checking your portfolio..." text
@@ -73,6 +73,62 @@ Single column. Decision inbox strip at top. Study cards stack vertically. Opport
 
 ### 17. Arabic/English
 Full RTL support. Welcome message in selected language. Business names may be mixed language. SAR currency with locale-appropriate formatting.
+
+---
+
+## S04a: My Businesses
+
+### 1. Business purpose
+Portfolio list view. Browse all Business Workspaces with status, health, and quick actions.
+
+### 2. User persona
+Entrepreneur (primary), Advisor (multi-client)
+
+### 5. Primary information hierarchy
+1. **Header**: "My Businesses" + "+ New Business" CTA
+2. **Business Cards** (list/grid toggle): Per business: name, sector badge, status (Active/Decided/Archived), health indicator, latest decision, evidence coverage bar, last activity
+3. **Sort/Filter**: By status, sector, last activity, decision outcome
+4. **Empty state**: "Create your first Business Workspace" + prominent CTA
+
+### 9. User actions
+- Create new business
+- Open any business workspace
+- Filter/sort list
+
+### 12. Empty state
+"No businesses yet. Create your first Business Workspace to start evaluating an opportunity." + "New Business" CTA
+
+---
+
+## S04b: Business Home
+
+### 1. Business purpose
+Persistent, study-independent home for a single business. Shows business identity, health, latest baseline, studies, evidence health, and recommended next actions.
+
+### 2. User persona
+Entrepreneur (primary), Investor (shared view)
+
+### 5. Primary information hierarchy
+1. **Business Profile Header**: Name, sector, location, status badge
+2. **Health & Status Summary**: Overall workspace health
+3. **Latest Approved Baseline**: Key financials from most recent approved study
+4. **Studies / Evaluations**: List of all studies for this business with status
+5. **Latest Decision**: Outcome, date, conditions
+6. **Evidence Health**: Coverage, freshness, gap count
+7. **Simulations**: Recent/saved scenarios (if Phase 9A+)
+8. **Funding Status**: Readiness, gap, matched programs (if Phase 9B+)
+9. **Monitoring Status**: Actual vs plan, active alerts (if Phase 10+)
+10. **Recent Activity Timeline**: Chronological log of actions
+11. **Recommended Next Action**: AI-suggested next step
+
+### 9. User actions
+- Start new evaluation
+- Open existing study
+- View evidence register
+- Navigate to simulator / funding / monitoring (when available)
+
+### 12. Empty state
+Business just created: "Start your first evaluation for [business name]." + "New Evaluation" CTA
 
 ---
 
@@ -267,7 +323,7 @@ The owner decision screen. AI presents its recommendation with full reasoning; o
 
 ### 5. Primary information hierarchy
 1. **AI Recommendation Banner**: Large, prominent — GO (green) / GO_WITH_CONDITIONS (yellow) / DEFER (orange) / NO_GO (red)
-2. **Reasoning Chain**: Step-by-step how AI reached the recommendation (evidence sufficient? → financially viable? → risks acceptable?)
+2. **Structured Decision Rationale**: How the AI reached the recommendation (evidence sufficient? → financially viable? → risks acceptable?)
 3. **Conditions** (if GO_WITH_CONDITIONS): Numbered list of specific conditions that must be addressed
 4. **Evidence Coverage at Decision**: Summary of evidence strength at this point
 5. **Key Financial Metrics**: Investment, Revenue (base), Break-even — with confidence

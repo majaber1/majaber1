@@ -67,7 +67,7 @@ Critical assumptions (high decision impact) have tighter thresholds.
 ### Alert Processing
 1. System detects trigger condition
 2. AI assesses severity and generates recommendation
-3. Alert appears in Decision Inbox + Monitoring Dashboard
+3. Alert appears in Action Center + Monitoring Dashboard
 4. User acknowledges and acts (or dismisses with reason)
 5. Resolution tracked
 

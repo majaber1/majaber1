@@ -10,10 +10,16 @@
 
 ### Color System
 
-**Primary Palette** (Saudi green — established in prototypes)
-- Primary: Deep green (#1B5E20 range) — trust, Saudi identity, growth
-- Primary light: Lighter green for backgrounds, hover states
-- Primary dark: Darker green for headers, emphasis
+**Primary Palette** (Saudi green as controlled accent — not a green-dominant theme)
+- Primary accent: Deep green (#1B5E20 range) — trust, Saudi identity, growth. Used for CTAs, active states, key indicators. NOT for large surface areas.
+- Primary light: Lighter green for hover states, selected row backgrounds (subtle)
+- Primary dark: Darker green for emphasis on small elements (badges, icons)
+
+**Surface Palette** (dominant visual tone — strong neutrals)
+- Application background: Light warm gray (#F8F9FA)
+- Card/panel surface: White (#FFFFFF)
+- Sidebar: Dark neutral (#1E1E2E range) or white, depending on mode
+- Headers: Neutral (not green)
 
 **Semantic Colors**
 - Success/GO: Green (#2E7D32)

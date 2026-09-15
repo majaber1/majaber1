@@ -135,11 +135,12 @@ Within a tab: section anchors, filters, view toggles
 3. **Quick switch**: Cmd+K / search bar for global navigation to any study, opportunity, or report
 4. **Related links**: Each module surfaces relevant cross-module actions (e.g., Feasibility → "Test with Simulator", "Check Funding Readiness")
 5. **Action Center**: Accessible from any screen via persistent badge in sidebar
+6. **Future module navigation policy**: During Phase 9, unimplemented modules (Simulator, Funding, Opportunity Radar, Monitoring) must be feature-flag hidden until enabled. No broken or dead routes. Sidebar items for unimplemented modules are not rendered until the module is available.
 
 ## State Handling
 
 ### Empty States
-- **No studies**: "Start your first business study" with prominent CTA and brief value proposition
+- **No businesses**: "Create your first Business Workspace" with prominent CTA and brief value proposition
 - **No evidence yet**: "AI is researching..." with progress indicator
 - **No monitoring data**: "Connect your business data or enter actuals to start monitoring"
 - **No opportunities**: "Opportunity Radar is scanning — you'll be notified when relevant signals appear"

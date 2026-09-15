@@ -11,6 +11,23 @@
 7. **Domain-agnostic core** — sector specifics come from configuration, not agent logic
 8. **Human-in-the-loop** — agents recommend, humans decide
 9. **Token/cost guardrails** — each agent invocation should have cost bounds; prefer deterministic computation to reduce LLM token usage
+10. **Reuse before recompute** — reuse persisted outputs and previously approved baselines where valid
+
+## Token / AI Cost Guardrail Rules
+
+The orchestrator and all agents must observe:
+
+1. **Reuse persisted outputs** — do not recompute what is already stored and valid
+2. **Cache reusable normalized evidence/results** — avoid redundant normalization
+3. **Check evidence freshness before re-research** — do not re-research evidence that is still fresh
+4. **Do not research an already-satisfied information need** — skip completed research items
+5. **Materiality-based research depth** — allocate deeper research to high-impact information needs; use lighter research for low-impact items
+6. **Bounded gap-recovery cycles** — maximum number of gap-recovery iterations per study (configurable); do not loop indefinitely
+7. **Stop research when evidence sufficiency criteria are met** — do not over-research beyond what the decision framework requires
+8. **Orchestrator must NOT invoke every capability for every request** — route to the minimum necessary agents
+9. **Deterministic calculation before LLM reasoning** — always attempt deterministic computation first
+10. **Avoid duplicate LLM synthesis** — do not re-summarize or re-analyze data that has already been processed
+11. **Reuse previously approved Business baseline where valid** — if a prior baseline exists and conditions haven't changed, reference it rather than rebuilding
 
 ## Architecture
 
@@ -292,7 +309,7 @@ User Request
 - Alert thresholds must be configurable, not hardcoded
 - Must not generate false urgency
 
-**Handoff**: Alerts → Decision Inbox; Recommendations → Simulator or new Research cycle
+**Handoff**: Alerts → Action Center; Recommendations → Simulator or new Research cycle
 
 **Failure behavior**: No data → prompt user for input; stale data → staleness warning. External source failure → degrade gracefully, note reduced monitoring coverage.
 

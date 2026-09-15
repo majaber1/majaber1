@@ -37,7 +37,7 @@ Humans approve, reject, edit, override, and decide.
 | 6 | **Business Decision Simulator** | What-if scenario engine on approved baselines | Needs specification |
 | 7 | **Continuous Business Intelligence** | Post-launch monitoring: actual vs plan, alerts, staleness, competitor changes | Needs specification |
 | 8 | **Reports & Knowledge Workspace** | Report generation, evidence register, decision history, knowledge base | Needs specification |
-| 9 | **Decision Inbox** | Pending owner actions: approvals, reviews, overrides, gap resolutions | New specification |
+| 9 | **Action Center** | Pending owner actions: approvals, reviews, overrides, gap resolutions | New specification |
 
 ## Domain Generalization
 
@@ -103,6 +103,32 @@ User / Organization
 ```
 
 A "Business" is the primary organizational unit, not a "Study." Studies are evaluations conducted within a Business Workspace. All modules (Simulator, Funding, Monitoring, Reports) attach to a Business Workspace, not to individual studies. Evidence may be shared across studies within the same Business.
+
+### Key Screens
+
+- **My Businesses** (`/businesses`): Portfolio list of all the user's Business Workspaces
+- **Business Home** (`/businesses/:bid`): Persistent home for one business — profile, health, studies, evidence, decisions, simulations, funding, monitoring, reports, next actions
+- **Study Workspace** (`/businesses/:bid/studies/:sid`): Evaluation workspace within a business
+
+The Business Home is NOT a redirect to the latest study. It is a persistent, study-independent view of the business.
+
+### New Business vs New Evaluation
+
+- **New Business**: Creates a Business Workspace. May or may not include an initial evaluation.
+- **New Evaluation**: Creates a Study/Evaluation under an existing Business, OR creates a provisional Business first if the idea is new.
+
+Global "New Evaluation" flow:
+1. Select existing Business OR create new Business/idea
+2. Create Study/Evaluation within that Business
+
+Existing businesses are NOT required to run feasibility. They may enter their Business Workspace and go directly to Monitoring, Simulator, Funding, or create a new evaluation when needed.
+
+### Evidence Scope
+
+- **Business evidence** (`/businesses/:bid/evidence`): All evidence associated with a Business Workspace, across all studies
+- **Study-scoped evidence**: Evidence filtered to the active study within the workspace
+
+A study workspace must not display unrelated evidence from another study without clearly indicating it is reusable Business-level evidence. Provenance and study/business linkage must be preserved.
 
 ## Market Context
 
