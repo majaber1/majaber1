@@ -13,6 +13,7 @@ export default function Navigation() {
     { href: '/', label: t('nav.portfolio') },
     { href: '/focus', label: t('nav.focus') },
     { href: '/audit', label: locale === 'ar' ? 'التدقيق' : 'Audit' },
+    { href: '/tools/simulator', label: locale === 'ar' ? 'محاكي القرارات' : 'Simulator' },
   ];
 
   return (

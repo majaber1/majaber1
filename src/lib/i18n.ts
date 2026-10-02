@@ -97,6 +97,10 @@ const translations: Record<string, Record<Locale, string>> = {
   'section.vercel': { en: 'Vercel Status', ar: 'حالة Vercel' },
   'section.artifacts': { en: 'Artifact Readiness', ar: 'جاهزية المخرجات' },
 
+  'nav.simulator': { en: 'Simulator', ar: 'محاكي القرارات' },
+  'simulator.title': { en: 'Decision Simulator', ar: 'محاكي القرارات' },
+  'simulator.subtitle': { en: 'Test how changes affect business outcomes', ar: 'اختبر تأثير التغييرات على نتائج الأعمال' },
+
   'label.score': { en: 'Score', ar: 'النتيجة' },
   'label.recommendation': { en: 'Recommendation', ar: 'التوصية' },
   'label.stage': { en: 'Stage', ar: 'المرحلة' },
